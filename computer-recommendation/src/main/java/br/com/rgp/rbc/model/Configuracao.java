@@ -5,6 +5,8 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.google.gson.Gson;
+
 @Entity
 public class Configuracao {
 
@@ -62,6 +64,12 @@ public class Configuracao {
         this.storage = storage;
     }
 
+    @Override
+    public String toString() {
+    	Gson converter = new Gson();
+    	return converter.toJson(this);
+    }
+    
     public CPU getCpu() {
         return cpu;
     }
