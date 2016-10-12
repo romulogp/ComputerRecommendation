@@ -4,26 +4,47 @@ import java.io.File;
 
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
 
-import br.com.rgp.rbc.model.CPU;
 import br.com.rgp.rbc.model.Configuracao;
-import br.com.rgp.rbc.model.Fonte;
-import br.com.rgp.rbc.model.Memoria;
-import br.com.rgp.rbc.model.PlacaDeVideo;
-import br.com.rgp.rbc.model.PlacaMae;
-import br.com.rgp.rbc.model.Storage;
 
 public class TestClass {
 
+	private static final String DB_FILE_NAME = "database";
+	private static final String DB_FILE_PATH = new File("").getAbsolutePath() + File.separator + DB_FILE_NAME;
+	
 	public static void main(String[] args) {
-		ObjectContainer db = Db4o.openFile(new File("teste").getAbsolutePath());
-		Configuracao c = new Configuracao(new CPU(), new Fonte(), new Memoria(), new PlacaDeVideo(), new PlacaMae(), new Storage());
-		System.out.println("Cliente armazenado: " + c);
+		System.out.println(DB_FILE_PATH);
+
+//		saveObject();
+		loadConfigurations();
+		
+	}
+
+	@SuppressWarnings("deprecation")
+	private static final void loadConfigurations() {
+		ObjectContainer db = Db4o.openFile(DB_FILE_PATH);
+		
+		// recuperar todos as configurações
+		ObjectSet<Configuracao> configuracoes = db.get(Configuracao.class);
+		while (configuracoes.hasNext()) {
+			System.out.println(configuracoes.next());
+		}
+		
+		db.close();
+	}
+	
+	@SuppressWarnings({ "unused", "deprecation" })
+	private static final void saveObject() {
+		ObjectContainer db = Db4o.openFile(DB_FILE_PATH);
+		
 		try {
+			Configuracao c = new Configuracao();
+			db.set(c);
+			System.out.println("Cliente armazenado: " + c);
 		} finally {
 			db.close();
 		}
-
 	}
-
+	
 }
