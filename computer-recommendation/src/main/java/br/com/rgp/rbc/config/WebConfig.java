@@ -17,10 +17,8 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
-import br.com.rgp.rbccontroller.IndexController;
-
 @Configuration
-@ComponentScan(basePackageClasses = { IndexController.class })
+@ComponentScan(basePackages = { "br.com.rgp.rbc.controller", "br.com.rgp.rbc.service" })
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
