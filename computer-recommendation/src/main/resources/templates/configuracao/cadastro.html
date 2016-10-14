@@ -15,6 +15,9 @@
     <!-- Bootstrap Core CSS -->
     <link href="layout/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+	<!-- Bootstrap Select -->
+	<link href="layout/vendor/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet">
+	
 	<!-- Font Awesome -->
 	<link href="layout/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	
@@ -62,20 +65,46 @@
         <!-- /.container -->
     </nav>
 
-	<!-- Intro Section -->
-    <section id="intro" class="intro-section">
-		<!-- Image Background Page Header -->
-		<!-- Note: The background image is set within the business-casual.css file. -->
-		<header class="business-header">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<h1 class="tagline">Computer Recommendation RBC</h1>
+	<form>
+        <div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h2 class="page-header">CPU</h2>
+				</div>
+				
+				<div class="col-sm-5 col-lg-3">
+					<div class="form-group">
+						<label for="inputCpuMarca">Marca</label>
+	                 	<select id="inputCpuMarca" class="form-control selectpicker">
+		                   	<option>AMD</option>
+		                   	<option>Intel</option>
+						</select>
+		               </div>
+				</div>
+				
+				<div class="col-sm-7 col-lg-3">
+					<div class="form-group">
+						<label for="inputCpuModelo">Modelo</label>
+						<input id="inputCpuModelo" type="text" class="form-control" placeholder="Modelo">
 					</div>
 				</div>
+				
 			</div>
-		</header>
-	</section>
+			
+			<hr>
+			
+			<!-- Footer -->
+			<footer>
+				<div class="row">
+					<div class="col-lg-12">
+						<p>UNIVALI - Universidade do Vale do Itajaí</p>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+			</footer>
+        </div>
+       </form>
 	
     <!-- jQuery -->
     <script src="layout/js/jquery.js"></script>
@@ -86,6 +115,9 @@
 	<!-- Scrolling Nav JavaScript -->
     <script src="layout/js/jquery.easing.min.js"></script>
     <script src="layout/js/scrolling-nav.js"></script>
+	
+	<script src="layout/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+<!-- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/i18n/defaults-*.min.js"></script>		 -->
 	
 </body>
 
