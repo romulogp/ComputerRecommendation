@@ -23,7 +23,7 @@ public class ComputerController {
 		return "configuracao/cadastro";
 	}
 	
-	@RequestMapping("/configuracoes")
+	@RequestMapping("/database")
 	public String listConfiguration(Model model) {
 		
 		model.addAttribute("configuracoes", configuracaoService.listAllConfigurations());

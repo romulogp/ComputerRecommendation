@@ -25,7 +25,7 @@ public class ConfiguracaoService implements IConfiguracaoService {
 		try {
 			Configuracao c = new Configuracao();
 			db.set(c);
-			System.out.println("Cliente armazenado: " + c);
+			System.out.println("Configuração salva com sucesso: " + c);
 		} finally {
 			db.close();
 		}
@@ -34,7 +34,7 @@ public class ConfiguracaoService implements IConfiguracaoService {
 	@SuppressWarnings("deprecation")
 	@Override
 	public List<Configuracao> listAllConfigurations() {
-		//saveObject();
+//		saveObject();
 		List<Configuracao> configuracoes = new ArrayList<>();
 		
 		ObjectContainer db = Db4o.openFile(DB_FILE_PATH);
@@ -42,7 +42,6 @@ public class ConfiguracaoService implements IConfiguracaoService {
 		
 		while (dbList.hasNext()) {
 			configuracoes.add(dbList.next());
-			System.out.println(dbList.next().toString());
 		}
 		
 		System.out.println(configuracoes.size() + " configurações.");
