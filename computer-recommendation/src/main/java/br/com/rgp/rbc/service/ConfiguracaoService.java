@@ -1,6 +1,7 @@
 package br.com.rgp.rbc.service;
 
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,12 +17,12 @@ import br.com.rgp.rbc.model.Configuracao;
 public class ConfiguracaoService implements IConfiguracaoService {
 
 	private static final String DB_FILE_NAME = "database";
-	private static final String DB_FILE_PATH = new File("").getAbsolutePath() + File.separator + DB_FILE_NAME;
+	private static final String DB_FILE_PATH = Paths.get("").toAbsolutePath().toString() + File.separator + DB_FILE_NAME;
 	
 	@SuppressWarnings({ "unused", "deprecation" })
 	private static final void saveObject() {
 		ObjectContainer db = Db4o.openFile(DB_FILE_PATH);
-		
+		System.out.println("Local do arquivo da base de dados: " + DB_FILE_PATH);
 		try {
 			Configuracao c = new Configuracao();
 			db.set(c);
@@ -37,6 +38,7 @@ public class ConfiguracaoService implements IConfiguracaoService {
 //		saveObject();
 		List<Configuracao> configuracoes = new ArrayList<>();
 		
+		System.out.println("Lendo dados do arquivo: " + DB_FILE_PATH);
 		ObjectContainer db = Db4o.openFile(DB_FILE_PATH);
 		ObjectSet<Configuracao> dbList = db.get(Configuracao.class);
 		
@@ -49,5 +51,5 @@ public class ConfiguracaoService implements IConfiguracaoService {
 		db.close();
 		return configuracoes;
 	}
-	
+
 }

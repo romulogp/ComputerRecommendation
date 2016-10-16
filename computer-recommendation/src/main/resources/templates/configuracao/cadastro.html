@@ -56,7 +56,7 @@
                         <a class="page-scroll" href="database">Base de dados</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#equipe">Equipe</a>
+                        <a class="page-scroll" href="cadastro">Cadastro</a>
                     </li>
                 </ul>
             </div>
@@ -65,46 +65,293 @@
         <!-- /.container -->
     </nav>
 
-	<form>
-        <div class="container">
+	<div class="container">
+		<h2>Cadastro de Configuração</h2>
+		
+		<form>
+			<!-- PROCESSADOR -->
 			<div class="row">
-				<div class="col-lg-12">
-					<h2 class="page-header">CPU</h2>
+				<div class="col-xs-12">
+					<h4 class="page-header">Processador</h4>
 				</div>
-				
-				<div class="col-sm-5 col-lg-3">
-					<div class="form-group">
-						<label for="inputCpuMarca">Marca</label>
-	                 	<select id="inputCpuMarca" class="form-control selectpicker">
-		                   	<option>AMD</option>
-		                   	<option>Intel</option>
-						</select>
-		               </div>
+                <div class="col-md-3 form-group">
+                  	<label for="inputCpuMarca">Marca</label>
+                  	<select id="inputCpuMarca" class="form-control selectpicker">
+                  		<option>Selecione a marca</option>
+	                   	<option>AMD</option>
+	                   	<option>Intel</option>
+					</select>
+                </div>
+                <div class="col-md-3 form-group">
+                	<label for="inputCpuModelo">Modelo</label>
+                	<input id="inputCpuModelo" type="text" class="form-control" placeholder="Modelo">
+                </div>
+			</div>			
+			<div class="row">
+				<div class="col-md-3 form-group">
+					<label for="inputCpuNucleos">Núcleos</label>
+					<input id="inputCpuNucleos" type="text" class="form-control" placeholder="Quantidade de núcleos">
 				</div>
-				
-				<div class="col-sm-7 col-lg-3">
-					<div class="form-group">
-						<label for="inputCpuModelo">Modelo</label>
-						<input id="inputCpuModelo" type="text" class="form-control" placeholder="Modelo">
-					</div>
+				<div class="col-md-3 form-group">
+					<label for="inputCpuClock">Clock</label>
+					<input id="inputCpuClock" type="text" class="form-control" placeholder="Clock (Mhz)">
 				</div>
-				
+				<div class="col-md-3 form-group">
+					<label for="inputCpuCache">Cache</label>
+					<input id="inputCpuCache" type="text" class="form-control" placeholder="Cache (MB)">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputCpuTDP">TDP</label>
+					<input id="inputCpuTDP" type="text" class="form-control" placeholder="TDP (watts)">
+				</div>
 			</div>
 			
-			<hr>
-			
-			<!-- Footer -->
-			<footer>
-				<div class="row">
-					<div class="col-lg-12">
-						<p>UNIVALI - Universidade do Vale do Itajaí</p>
-					</div>
-					<!-- /.col-lg-12 -->
+			<!-- PLACA MÃE -->
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="page-header">Placa Mãe</h4>
 				</div>
-				<!-- /.row -->
-			</footer>
-        </div>
-       </form>
+				<div class="col-md-3 form-group">
+					<label for="inputPlacaMaeMarca">Marca</label>
+                 	<select id="inputPlacaMaeMarca" class="form-control selectpicker">
+                 		<option>Selecione a marca</option>
+	                   	<option>AsRock</option>
+	                   	<option>ASUS</option>
+	                   	<option>Foxconn</option>
+	                   	<option>Gigabyte</option>
+	                   	<option>MSI</option>
+					</select>
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputPlacaMaeModelo">Modelo</label>
+					<input id="inputPlacaMaeModelo" type="text" class="form-control" placeholder="Modelo">
+				</div>
+			</div>
+			
+			<!-- PLACA DE VÍDEO -->
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="page-header">Placa de Vídeo</h4>
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUMarca">Marca</label>
+                 	<select id="inputGPUMarca" class="form-control selectpicker">
+                 		<option>Selecione a marca</option>
+	                   	<option>ASUS</option>
+	                   	<option>EVGA</option>
+	                   	<option>Gigabyte</option>
+	                   	<option>MSI</option>
+	                   	<option>NVidia</option>
+	                   	<option>ZOTAC</option>
+					</select>
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUModelo">Modelo</label>
+					<input id="inputGPUVModelo" type="text" class="form-control" placeholder="Modelo">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUNucleos">Núcleos</label>
+					<input id="inputGPUNucleos" type="text" class="form-control" placeholder="Quantidade de núcleos">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 form-group">
+					<label for="inputGPUClockB">Clock Base</label>
+					<input id="inputGPUClockB" type="text" class="form-control" placeholder="Clock Base (Mhz)">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUClockM">Clock Memória</label>
+					<input id="inputGPUClockM" type="text" class="form-control" placeholder="Clock Memória (Mhz)">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUMemSize">Qtd. Memória</label>
+					<select id="inputGPUMemSize" class="form-control selectpicker">
+                 		<option>Selecione a marca</option>
+	                	<option value="1">1 GB</option>
+	                   	<option value="2">2 GB</option>
+	                   	<option value="3">3 GB</option>
+	                   	<option value="4">4 GB</option>
+	                   	<option value="6">6 GB</option>
+	                   	<option value="8">8 GB</option>
+	                   	<option value="12">12 GB</option>
+                   		<option value="16">16 GB</option>
+					</select>
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUConsumo">Consumo</label>
+					<input id="inputGPUConsumo" type="text" class="form-control" placeholder="Consumo (watts)">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUBits">Bits</label>
+					<input id="inputGPUBits" type="text" class="form-control" placeholder="Bits">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUBandW">Largura de Banda</label>
+					<input id="inputGPUBandW" type="text" class="form-control" placeholder="Largura de banda (GB/s)">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUComprim">Comprimento</label>
+					<input id="inputGPUComprim" type="text" class="form-control" placeholder="Comprimento (cm)">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUMaxTemp">Temperatura Máxima</label>
+					<input id="inputGPUMaxTemp" type="text" class="form-control" placeholder="Temperatura máxima (Cº)">
+				</div>
+			</div>
+			
+			<!-- RAM -->
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="page-header">Memória RAM</h4>
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputRAMMarca">Marca</label>
+                 	<select id="inputRAMMarca" class="form-control selectpicker">
+                 		<option>Selecione a marca</option>
+	                	<option>Corsair</option>
+	                   	<option>Kingston</option>
+	                   	<option>Patriot</option>
+	                   	<option>G-Skill</option>
+	                   	<option>Ocz</option>
+	                   	<option>Crucial</option>
+	                   	<option>Samsung</option>
+                   		<option>Markivision</option>
+					</select>
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputRAMModelo">Modelo</label>
+					<input id="inputRAMModelo" type="text" class="form-control" placeholder="Modelo da Memória">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputRAMClock">Clock</label>
+					<input id="inputRAMClock" type="text" class="form-control" placeholder="Clock (Mhz)">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputRAMSize">Tamanho</label>
+					<select id="inputRAMSize" class="form-control selectpicker">
+	                	<option value="1">1 GB</option>
+	                   	<option value="2">2 GB</option>
+	                   	<option value="4">4 GB</option>
+	                   	<option value="8">8 GB</option>
+	                   	<option value="16">16 GB</option>
+	                   	<option value="32">32 GB</option>
+	                   	<option value="64">64 GB</option>
+					</select>
+				</div>
+			</div>
+			
+			<!-- ARMAZENAMENTO -->
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="page-header">Armazenamento de dados</h4>
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputStorageMarca">Marca</label>
+                 	<select id="inputStorageMarca" class="form-control selectpicker">
+                 		<option>Selecione a marca</option>
+	                	<option>SanDisk</option>
+	                   	<option>Kingston</option>
+	                   	<option>Patriot</option>
+	                   	<option>Ocz</option>
+	                   	<option>Crucial</option>
+	                   	<option>Samsung</option>
+                   		<option>Markivision</option>
+                   		<option>Seagate</option>
+                   		<option>Western Digital</option>                   		
+                   		<option>IBM</option>
+                   		<option>Intel</option>
+                   		<option>AMD</option>
+                   		<option>HGST</option>
+					</select>
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputStorageModelo">Modelo</label>
+					<input id="inputStorageModelo" type="text" class="form-control" placeholder="Modelo disp. de armazenamento">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputSTOSpeed">Leitura / Gravação</label>
+					<input id="inputSTOSpeed" type="text" class="form-control" placeholder="Velocidade (MB/s)">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputRAMSize">Capacidade</label>
+					<select id="inputRAMSize" class="form-control selectpicker">
+	                	<option value="120">120 GB</option>
+	                   	<option value="250">250 GB</option>
+	                   	<option value="500">500 GB</option>
+	                   	<option value="1000">1 TB</option>
+	                   	<option value="1500">1.5 TB</option>
+	                   	<option value="2000">2 TB</option>
+	                   	<option value="4000">4 TB</option>
+					</select>
+				</div>
+			</div>
+			
+			<!-- FONTE -->
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="page-header">Fonte de Alimentação</h4>
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputPSUMarca">Marca</label>
+                 	<select id="inputPSUMarca" class="form-control selectpicker">
+                 		<option>Selecione a marca</option>
+	                	<option>Corsair</option>
+	                   	<option>Cooler Master</option>
+	                   	<option>EVGA</option>
+                   		<option>PCYES</option>
+	                	<option>IceAge</option>
+	                	<option>C3 Tech</option>
+	                	<option>Powercool</option>
+	                   	<option>Patriot</option>
+	                	<option>LMS</option>
+	                   	<option>Ocz</option>
+	                	<option>BlueCase</option>
+	                	<option>Wisecase</option>
+	                	<option>Fortrek</option>
+	                	<option>VX Vinik</option>
+					</select>
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputPSUModelo">Modelo</label>
+					<input id="inputPSUModelo" type="text" class="form-control" placeholder="Modelo da fonte de alimentação">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputPSUPot">Potência</label>
+					<input id="inputPSUPot" type="text" class="form-control" placeholder="Potência (watts)">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputPSUSeal">Selo Fonte</label>
+					<select id="inputPSUSeal" class="form-control selectpicker">
+	                	<option value="50">Fonte Genérica</option>
+	                   	<option value="80">80 Plus Bronze</option>
+	                   	<option value="85">80 Plus Silver</option>
+	                   	<option value="90">80 Plus Gold</option>
+	                   	<option value="95">80 Plus Platinum</option>
+					</select>
+				</div>
+			</div>
+		</form>
+		
+		<hr>
+		
+		<button type="button" class="btn btn-primary">
+			<span class="glyphicon glyphicon-ok"></span> Salvar
+		</button>
+		
+		<hr>
+		
+		<!-- Footer -->
+		<footer>
+			<div class="row">
+				<div class="col-md-12">
+					<p>UNIVALI - Universidade do Vale do Itajaí</p>
+				</div>
+				<!-- /.col-md-12 -->
+			</div>
+			<!-- /.row -->
+		</footer>
+       </div>
+       
 	
     <!-- jQuery -->
     <script src="layout/js/jquery.js"></script>
