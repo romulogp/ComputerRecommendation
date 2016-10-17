@@ -8,4 +8,6 @@ public interface IConfiguracaoService {
 
 	List<Configuracao> listAllConfigurations();
 	
+	void save(Configuracao configuracao);
+	
 }

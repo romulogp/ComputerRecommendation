@@ -37,14 +37,14 @@ public class Configuracao {
     /**
      * Configuração Padrão
      */
-    public Configuracao() {
-        this.cpu = new CPU();
-        this.fonte = new Fonte();
-        this.ram = new Memoria();
-        this.placaDeVideo = new PlacaDeVideo();
-        this.placaMae = new PlacaMae();
-        this.storage = new Storage();
-    }
+//    public Configuracao() {
+//        this.cpu = new CPU();
+//        this.fonte = new Fonte();
+//        this.ram = new Memoria();
+//        this.placaDeVideo = new PlacaDeVideo();
+//        this.placaMae = new PlacaMae();
+//        this.storage = new Storage();
+//    }
     
     /**
      * Cria uma nova configuração
@@ -55,14 +55,14 @@ public class Configuracao {
      * @param placaMae
      * @param storage 
      */
-    public Configuracao(CPU cpu, Fonte fonte, Memoria ram, PlacaDeVideo placaDeVideo, PlacaMae placaMae, Storage storage) {
-        this.cpu = cpu;
-        this.fonte = fonte;
-        this.ram = ram;
-        this.placaDeVideo = placaDeVideo;
-        this.placaMae = placaMae;
-        this.storage = storage;
-    }
+//    public Configuracao(CPU cpu, Fonte fonte, Memoria ram, PlacaDeVideo placaDeVideo, PlacaMae placaMae, Storage storage) {
+//        this.cpu = cpu;
+//        this.fonte = fonte;
+//        this.ram = ram;
+//        this.placaDeVideo = placaDeVideo;
+//        this.placaMae = placaMae;
+//        this.storage = storage;
+//    }
 
     @Override
     public String toString() {

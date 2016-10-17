@@ -19,24 +19,7 @@ public class Memoria extends Dispositivo {
 	@DecimalMin(value = "0")
 	private Integer tamanho;
 
-	/**
-	 * Cria uma memoria padrão para fins de testes.
-	 */
-	public Memoria() {
-		super.setMarca("Kingston");
-		super.setModelo("Hyper X");
-		this.clock = 2133.0;
-		this.tamanho = 8;
-	}
-
-	public Memoria(String marca, String modelo, Double clock, Integer tamanho) {
-		super.setMarca(marca);
-		super.setModelo(modelo);
-		this.clock = clock;
-		this.tamanho = tamanho;
-	}
-
-	public double getClock() {
+	public Double getClock() {
 		return clock;
 	}
 
@@ -44,7 +27,7 @@ public class Memoria extends Dispositivo {
 		this.clock = clock;
 	}
 
-	public int getTamanho() {
+	public Integer getTamanho() {
 		return tamanho;
 	}
 

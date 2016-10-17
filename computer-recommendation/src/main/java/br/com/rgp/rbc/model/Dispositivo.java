@@ -12,8 +12,7 @@ public class Dispositivo extends AbstractEntity {
 	private static final long serialVersionUID = 1L;
 	
 	@Column(nullable = false)
-	@NotNull
-	@NotBlank
+	@NotBlank(message = "Marca é obrigatório")
 	private String marca;
 	
 	@Column(nullable = false)

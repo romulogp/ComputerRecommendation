@@ -19,14 +19,14 @@ public class ConfiguracaoService implements IConfiguracaoService {
 	private static final String DB_FILE_NAME = "database";
 	private static final String DB_FILE_PATH = Paths.get("").toAbsolutePath().toString() + File.separator + DB_FILE_NAME;
 	
-	@SuppressWarnings({ "unused", "deprecation" })
-	private static final void saveObject() {
+	@SuppressWarnings({ "deprecation" })
+	@Override
+	public final void save(Configuracao configuracao) {
 		ObjectContainer db = Db4o.openFile(DB_FILE_PATH);
-		System.out.println("Local do arquivo da base de dados: " + DB_FILE_PATH);
+		
 		try {
-			Configuracao c = new Configuracao();
-			db.set(c);
-			System.out.println("Configuração salva com sucesso: " + c);
+			db.set(configuracao);
+			System.out.println("Dados salvos em: \"" + DB_FILE_PATH + "\"");
 		} finally {
 			db.close();
 		}
@@ -34,11 +34,11 @@ public class ConfiguracaoService implements IConfiguracaoService {
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public List<Configuracao> listAllConfigurations() {
-//		saveObject();
+	public final List<Configuracao> listAllConfigurations() {
 		List<Configuracao> configuracoes = new ArrayList<>();
 		
-		System.out.println("Lendo dados do arquivo: " + DB_FILE_PATH);
+		System.out.println("Lendo dados do arquivo: \"" + DB_FILE_PATH + "\"");
+		
 		ObjectContainer db = Db4o.openFile(DB_FILE_PATH);
 		ObjectSet<Configuracao> dbList = db.get(Configuracao.class);
 		
@@ -46,7 +46,7 @@ public class ConfiguracaoService implements IConfiguracaoService {
 			configuracoes.add(dbList.next());
 		}
 		
-		System.out.println(configuracoes.size() + " configurações.");
+		System.out.println(configuracoes.size() + " configurações no total.");
 		
 		db.close();
 		return configuracoes;

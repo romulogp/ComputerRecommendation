@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
+	xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -68,7 +68,10 @@
 	<div class="container">
 		<h2>Cadastro de Configuração</h2>
 		
-		<form>
+		<form method="POST" th:object="${configuracao}" class="form-vertical js-form-loading">
+			
+			<th:block th:include="fragments/ValidationErrorMessages"></th:block>
+		
 			<!-- PROCESSADOR -->
 			<div class="row">
 				<div class="col-xs-12">
@@ -76,33 +79,33 @@
 				</div>
                 <div class="col-md-3 form-group">
                   	<label for="inputCpuMarca">Marca</label>
-                  	<select id="inputCpuMarca" class="form-control selectpicker">
-                  		<option>Selecione a marca</option>
-	                   	<option>AMD</option>
-	                   	<option>Intel</option>
+                  	<select id="inputCpuMarca" class="form-control selectpicker" th:field="*{cpu.marca}">
+                  		<option value="">Selecione a marca</option>
+	                   	<option value="AMD">AMD</option>
+	                   	<option value="Intel">Intel</option>
 					</select>
                 </div>
                 <div class="col-md-3 form-group">
                 	<label for="inputCpuModelo">Modelo</label>
-                	<input id="inputCpuModelo" type="text" class="form-control" placeholder="Modelo">
+                	<input id="inputCpuModelo" type="text" class="form-control" placeholder="Modelo" th:field="*{cpu.modelo}">
                 </div>
 			</div>			
 			<div class="row">
 				<div class="col-md-3 form-group">
 					<label for="inputCpuNucleos">Núcleos</label>
-					<input id="inputCpuNucleos" type="text" class="form-control" placeholder="Quantidade de núcleos">
+					<input id="inputCpuNucleos" type="text" class="form-control" placeholder="Quantidade de núcleos" th:field=*{cpu.nucleos}>
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputCpuClock">Clock</label>
-					<input id="inputCpuClock" type="text" class="form-control" placeholder="Clock (Mhz)">
+					<input id="inputCpuClock" type="text" class="form-control" placeholder="Clock (Ghz)" th:field="*{cpu.clock}">
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputCpuCache">Cache</label>
-					<input id="inputCpuCache" type="text" class="form-control" placeholder="Cache (MB)">
+					<input id="inputCpuCache" type="text" class="form-control" placeholder="Cache (MB)" th:field="*{cpu.cache}">
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputCpuTDP">TDP</label>
-					<input id="inputCpuTDP" type="text" class="form-control" placeholder="TDP (watts)">
+					<input id="inputCpuTDP" type="text" class="form-control" placeholder="TDP (watts)" th:field="*{cpu.tdp}">
 				</div>
 			</div>
 			
@@ -113,18 +116,18 @@
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputPlacaMaeMarca">Marca</label>
-                 	<select id="inputPlacaMaeMarca" class="form-control selectpicker">
-                 		<option>Selecione a marca</option>
-	                   	<option>AsRock</option>
-	                   	<option>ASUS</option>
-	                   	<option>Foxconn</option>
-	                   	<option>Gigabyte</option>
-	                   	<option>MSI</option>
+                 	<select id="inputPlacaMaeMarca" class="form-control selectpicker" th:field="*{placaMae.marca}">
+                 		<option value="">Selecione a marca</option>
+	                   	<option value="AsRock">AsRock</option>
+	                   	<option value="ASUS">ASUS</option>
+	                   	<option value="Foxconn">Foxconn</option>
+	                   	<option value="Gigabyte">Gigabyte</option>
+	                   	<option value="MSI">MSI</option>
 					</select>
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputPlacaMaeModelo">Modelo</label>
-					<input id="inputPlacaMaeModelo" type="text" class="form-control" placeholder="Modelo">
+					<input id="inputPlacaMaeModelo" type="text" class="form-control" placeholder="Modelo" th:field="*{placaMae.modelo}">
 				</div>
 			</div>
 			
@@ -135,38 +138,39 @@
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUMarca">Marca</label>
-                 	<select id="inputGPUMarca" class="form-control selectpicker">
-                 		<option>Selecione a marca</option>
-	                   	<option>ASUS</option>
-	                   	<option>EVGA</option>
-	                   	<option>Gigabyte</option>
-	                   	<option>MSI</option>
-	                   	<option>NVidia</option>
-	                   	<option>ZOTAC</option>
+                 	<select id="inputGPUMarca" class="form-control selectpicker" th:field="*{placaDeVideo.marca}">
+                 		<option value="">Selecione a marca</option>
+                 		<option value="AMD">AMD</option>
+	                   	<option value="ASUS">ASUS</option>
+	                   	<option value="EVGA">EVGA</option>
+	                   	<option value="Gigabyte">Gigabyte</option>
+	                   	<option value="MSI">MSI</option>
+	                   	<option value="NVidia">NVidia</option>
+	                   	<option value="ZOTAC">ZOTAC</option>
 					</select>
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUModelo">Modelo</label>
-					<input id="inputGPUVModelo" type="text" class="form-control" placeholder="Modelo">
+					<input id="inputGPUVModelo" type="text" class="form-control" placeholder="Modelo" th:field="*{placaDeVideo.modelo}">
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUNucleos">Núcleos</label>
-					<input id="inputGPUNucleos" type="text" class="form-control" placeholder="Quantidade de núcleos">
+					<input id="inputGPUNucleos" type="text" class="form-control" placeholder="Quantidade de núcleos" th:field="*{placaDeVideo.nucleos}">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-3 form-group">
 					<label for="inputGPUClockB">Clock Base</label>
-					<input id="inputGPUClockB" type="text" class="form-control" placeholder="Clock Base (Mhz)">
+					<input id="inputGPUClockB" type="text" class="form-control" placeholder="Clock Base (Mhz)" th:field="*{placaDeVideo.clockBase}">
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUClockM">Clock Memória</label>
-					<input id="inputGPUClockM" type="text" class="form-control" placeholder="Clock Memória (Mhz)">
+					<input id="inputGPUClockM" type="text" class="form-control" placeholder="Clock Memória (Mhz)" th:field="*{placaDeVideo.clockMemoria}">
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUMemSize">Qtd. Memória</label>
-					<select id="inputGPUMemSize" class="form-control selectpicker">
-                 		<option>Selecione a marca</option>
+					<select id="inputGPUMemSize" class="form-control selectpicker" th:field="*{placaDeVideo.tamanhoMemoria}">
+                 		<option value="">Selecione a quantidade</option>
 	                	<option value="1">1 GB</option>
 	                   	<option value="2">2 GB</option>
 	                   	<option value="3">3 GB</option>
@@ -179,23 +183,23 @@
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUConsumo">Consumo</label>
-					<input id="inputGPUConsumo" type="text" class="form-control" placeholder="Consumo (watts)">
+					<input id="inputGPUConsumo" type="text" class="form-control" placeholder="Consumo (watts)" th:field="*{placaDeVideo.consumo}">
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUBits">Bits</label>
-					<input id="inputGPUBits" type="text" class="form-control" placeholder="Bits">
+					<input id="inputGPUBits" type="text" class="form-control" placeholder="Bits" th:field="*{placaDeVideo.bits}">
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUBandW">Largura de Banda</label>
-					<input id="inputGPUBandW" type="text" class="form-control" placeholder="Largura de banda (GB/s)">
+					<input id="inputGPUBandW" type="text" class="form-control" placeholder="Largura de banda (GB/s)" th:field="*{placaDeVideo.larguraBanda}">
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUComprim">Comprimento</label>
-					<input id="inputGPUComprim" type="text" class="form-control" placeholder="Comprimento (cm)">
+					<input id="inputGPUComprim" type="text" class="form-control" placeholder="Comprimento (cm)" th:field="*{placaDeVideo.comprimento}">
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUMaxTemp">Temperatura Máxima</label>
-					<input id="inputGPUMaxTemp" type="text" class="form-control" placeholder="Temperatura máxima (Cº)">
+					<input id="inputGPUMaxTemp" type="text" class="form-control" placeholder="Temperatura máxima (Cº)" th:field="*{placaDeVideo.temperaturaMaxima}">
 				</div>
 			</div>
 			
@@ -206,29 +210,30 @@
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputRAMMarca">Marca</label>
-                 	<select id="inputRAMMarca" class="form-control selectpicker">
-                 		<option>Selecione a marca</option>
-	                	<option>Corsair</option>
-	                   	<option>Kingston</option>
-	                   	<option>Patriot</option>
-	                   	<option>G-Skill</option>
-	                   	<option>Ocz</option>
-	                   	<option>Crucial</option>
-	                   	<option>Samsung</option>
-                   		<option>Markivision</option>
+                 	<select id="inputRAMMarca" class="form-control selectpicker" th:field="*{ram.marca}">
+                 		<option value="">Selecione a marca</option>
+	                	<option value="Corsair">Corsair</option>
+	                   	<option value="Kingston">Kingston</option>
+	                   	<option value="Patriot">Patriot</option>
+	                   	<option value="G-Skill">G-Skill</option>
+	                   	<option value="Ocz">Ocz</option>
+	                   	<option value="Crucial">Crucial</option>
+	                   	<option value="Samsung">Samsung</option>
+                   		<option value="Markivision">Markivision</option>
 					</select>
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputRAMModelo">Modelo</label>
-					<input id="inputRAMModelo" type="text" class="form-control" placeholder="Modelo da Memória">
+					<input id="inputRAMModelo" type="text" class="form-control" placeholder="Modelo da Memória" th:field="*{ram.modelo}">
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputRAMClock">Clock</label>
-					<input id="inputRAMClock" type="text" class="form-control" placeholder="Clock (Mhz)">
+					<input id="inputRAMClock" type="text" class="form-control" placeholder="Clock (Mhz)" th:field="*{ram.clock}">
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputRAMSize">Tamanho</label>
-					<select id="inputRAMSize" class="form-control selectpicker">
+					<select id="inputRAMSize" class="form-control selectpicker" th:field="*{ram.tamanho}">
+						<option value="">Selecione o tamanho</option>
 	                	<option value="1">1 GB</option>
 	                   	<option value="2">2 GB</option>
 	                   	<option value="4">4 GB</option>
@@ -247,34 +252,35 @@
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputStorageMarca">Marca</label>
-                 	<select id="inputStorageMarca" class="form-control selectpicker">
-                 		<option>Selecione a marca</option>
-	                	<option>SanDisk</option>
-	                   	<option>Kingston</option>
-	                   	<option>Patriot</option>
-	                   	<option>Ocz</option>
-	                   	<option>Crucial</option>
-	                   	<option>Samsung</option>
-                   		<option>Markivision</option>
-                   		<option>Seagate</option>
-                   		<option>Western Digital</option>                   		
-                   		<option>IBM</option>
-                   		<option>Intel</option>
-                   		<option>AMD</option>
-                   		<option>HGST</option>
+                 	<select id="inputStorageMarca" class="form-control selectpicker" th:field="*{storage.marca}">
+                 		<option value="">Selecione a marca</option>
+	                	<option value="SanDisk">SanDisk</option>
+	                   	<option value="Kingston">Kingston</option>
+	                   	<option value="Patriot">Patriot</option>
+	                   	<option value="Ocz">Ocz</option>
+	                   	<option value="Crucial">Crucial</option>
+	                   	<option value="Samsung">Samsung</option>
+                   		<option value="Markivision">Markivision</option>
+                   		<option value="Seagate">Seagate</option>
+                   		<option value="Western Digital">Western Digital</option>                   		
+                   		<option value="IBM">IBM</option>
+                   		<option value="Intel">Intel</option>
+                   		<option value="AMD">AMD</option>
+                   		<option value="HGST">HGST</option>
 					</select>
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputStorageModelo">Modelo</label>
-					<input id="inputStorageModelo" type="text" class="form-control" placeholder="Modelo disp. de armazenamento">
+					<input id="inputStorageModelo" type="text" class="form-control" placeholder="Modelo disp. de armazenamento" th:field="*{storage.modelo}">
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputSTOSpeed">Leitura / Gravação</label>
-					<input id="inputSTOSpeed" type="text" class="form-control" placeholder="Velocidade (MB/s)">
+					<input id="inputSTOSpeed" type="text" class="form-control" placeholder="Velocidade (MB/s)" th:field="*{storage.velocidade}">
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputRAMSize">Capacidade</label>
-					<select id="inputRAMSize" class="form-control selectpicker">
+					<select id="inputRAMSize" class="form-control selectpicker" th:field="*{storage.capacidade}">
+						<option value="">Selecione o tamanho</option>
 	                	<option value="120">120 GB</option>
 	                   	<option value="250">250 GB</option>
 	                   	<option value="500">500 GB</option>
@@ -293,35 +299,36 @@
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputPSUMarca">Marca</label>
-                 	<select id="inputPSUMarca" class="form-control selectpicker">
-                 		<option>Selecione a marca</option>
-	                	<option>Corsair</option>
-	                   	<option>Cooler Master</option>
-	                   	<option>EVGA</option>
-                   		<option>PCYES</option>
-	                	<option>IceAge</option>
-	                	<option>C3 Tech</option>
-	                	<option>Powercool</option>
-	                   	<option>Patriot</option>
-	                	<option>LMS</option>
-	                   	<option>Ocz</option>
-	                	<option>BlueCase</option>
-	                	<option>Wisecase</option>
-	                	<option>Fortrek</option>
-	                	<option>VX Vinik</option>
+                 	<select id="inputPSUMarca" class="form-control selectpicker" th:field="*{fonte.marca}">
+                 		<option value="">Selecione a marca</option>
+	                	<option value="Corsair">Corsair</option>
+	                   	<option value="Cooler Master">Cooler Master</option>
+	                   	<option value="EVGA">EVGA</option>
+                   		<option value="PCYES">PCYES</option>
+	                	<option value="IceAge">IceAge</option>
+	                	<option value="C3 Tech">C3 Tech</option>
+	                	<option value="Powercool">Powercool</option>
+	                   	<option value="Patriot">Patriot</option>
+	                	<option value="LMS">LMS</option>
+	                   	<option value="">Ocz</option>
+	                	<option value="BlueCase">BlueCase</option>
+	                	<option value="Wisecase">Wisecase</option>
+	                	<option value="Fortrek">Fortrek</option>
+	                	<option value="VX Vinik">VX Vinik</option>
 					</select>
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputPSUModelo">Modelo</label>
-					<input id="inputPSUModelo" type="text" class="form-control" placeholder="Modelo da fonte de alimentação">
+					<input id="inputPSUModelo" type="text" class="form-control" placeholder="Modelo da fonte de alimentação" th:field="*{fonte.modelo}">
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputPSUPot">Potência</label>
-					<input id="inputPSUPot" type="text" class="form-control" placeholder="Potência (watts)">
+					<input id="inputPSUPot" type="text" class="form-control" placeholder="Potência (watts)" th:field="*{fonte.potencia}">
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputPSUSeal">Selo Fonte</label>
-					<select id="inputPSUSeal" class="form-control selectpicker">
+					<select id="inputPSUSeal" class="form-control selectpicker" th:field="*{fonte.eficiencia}">
+						<option value="">Selecione a fonte</option>
 	                	<option value="50">Fonte Genérica</option>
 	                   	<option value="80">80 Plus Bronze</option>
 	                   	<option value="85">80 Plus Silver</option>
@@ -330,13 +337,17 @@
 					</select>
 				</div>
 			</div>
+			
+			<hr>
+		
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">
+					<span class="glyphicon glyphicon-ok"></span> Salvar
+				</button>
+			</div>
+			
+			
 		</form>
-		
-		<hr>
-		
-		<button type="button" class="btn btn-primary">
-			<span class="glyphicon glyphicon-ok"></span> Salvar
-		</button>
 		
 		<hr>
 		

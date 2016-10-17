@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
+	xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -15,6 +15,9 @@
     <!-- Bootstrap Core CSS -->
     <link href="layout/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+	<!-- Bootstrap Select -->
+	<link href="layout/vendor/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet">
+	
 	<!-- Font Awesome -->
 	<link href="layout/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	
@@ -62,20 +65,187 @@
         <!-- /.container -->
     </nav>
 
-	<!-- Intro Section -->
-    <section id="intro" class="intro-section">
-		<!-- Image Background Page Header -->
-		<!-- Note: The background image is set within the business-casual.css file. -->
-		<header class="business-header">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<h1 class="tagline">Computer Recommendation RBC</h1>
-					</div>
+	<div class="container">
+		<h2>Buscar Recomendação</h2>
+		
+		<form method="POST" th:object="${configuracao}" class="form-vertical js-form-loading">
+			
+			<th:block th:include="fragments/ValidationErrorMessages"></th:block>
+		
+			<!-- PROCESSADOR -->
+			<div class="row">
+				<div class="col-xs-12">
+					<h4 class="page-header">Processador</h4>
+				</div>
+			</div>			
+			<div class="row">
+				<div class="col-md-3 form-group">
+					<label for="inputCpuNucleos">Núcleos</label>
+					<input id="inputCpuNucleos" type="text" class="form-control" placeholder="Quantidade de núcleos" th:field=*{cpu.nucleos}>
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputCpuClock">Clock</label>
+					<input id="inputCpuClock" type="text" class="form-control" placeholder="Clock (Ghz)" th:field="*{cpu.clock}">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputCpuCache">Cache</label>
+					<input id="inputCpuCache" type="text" class="form-control" placeholder="Cache (MB)" th:field="*{cpu.cache}">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputCpuTDP">TDP</label>
+					<input id="inputCpuTDP" type="text" class="form-control" placeholder="TDP (watts)" th:field="*{cpu.tdp}">
 				</div>
 			</div>
-		</header>
-	</section>
+			
+			<!-- PLACA DE VÍDEO -->
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="page-header">Placa de Vídeo</h4>
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUNucleos">Núcleos</label>
+					<input id="inputGPUNucleos" type="text" class="form-control" placeholder="Quantidade de núcleos" th:field="*{placaDeVideo.nucleos}">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUClockB">Clock Base</label>
+					<input id="inputGPUClockB" type="text" class="form-control" placeholder="Clock Base (Mhz)" th:field="*{placaDeVideo.clockBase}">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUClockM">Clock Memória</label>
+					<input id="inputGPUClockM" type="text" class="form-control" placeholder="Clock Memória (Mhz)" th:field="*{placaDeVideo.clockMemoria}">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUMemSize">Qtd. Memória</label>
+					<select id="inputGPUMemSize" class="form-control selectpicker" th:field="*{placaDeVideo.tamanhoMemoria}">
+                 		<option value="">Qtd de Memória</option>
+	                	<option value="1">1 GB</option>
+	                   	<option value="2">2 GB</option>
+	                   	<option value="3">3 GB</option>
+	                   	<option value="4">4 GB</option>
+	                   	<option value="6">6 GB</option>
+	                   	<option value="8">8 GB</option>
+	                   	<option value="12">12 GB</option>
+                   		<option value="16">16 GB</option>
+					</select>
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUConsumo">Consumo</label>
+					<input id="inputGPUConsumo" type="text" class="form-control" placeholder="Consumo (watts)" th:field="*{placaDeVideo.consumo}">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUBits">Bits</label>
+					<input id="inputGPUBits" type="text" class="form-control" placeholder="Bits" th:field="*{placaDeVideo.bits}">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUBandW">Largura de Banda</label>
+					<input id="inputGPUBandW" type="text" class="form-control" placeholder="Largura de banda (GB/s)" th:field="*{placaDeVideo.larguraBanda}">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUComprim">Comprimento</label>
+					<input id="inputGPUComprim" type="text" class="form-control" placeholder="Comprimento (cm)" th:field="*{placaDeVideo.comprimento}">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputGPUMaxTemp">Temperatura Máxima</label>
+					<input id="inputGPUMaxTemp" type="text" class="form-control" placeholder="Temperatura máxima (Cº)" th:field="*{placaDeVideo.temperaturaMaxima}">
+				</div>
+			</div>
+			
+			<!-- RAM -->
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="page-header">Memória RAM</h4>
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputRAMClock">Clock</label>
+					<input id="inputRAMClock" type="text" class="form-control" placeholder="Clock (Mhz)" th:field="*{ram.clock}">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputRAMSize">Tamanho</label>
+					<select id="inputRAMSize" class="form-control selectpicker" th:field="*{ram.tamanho}">
+						<option value="">Selecione o tamanho</option>
+	                	<option value="1">1 GB</option>
+	                   	<option value="2">2 GB</option>
+	                   	<option value="4">4 GB</option>
+	                   	<option value="8">8 GB</option>
+	                   	<option value="16">16 GB</option>
+	                   	<option value="32">32 GB</option>
+	                   	<option value="64">64 GB</option>
+					</select>
+				</div>
+			</div>
+			
+			<!-- ARMAZENAMENTO -->
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="page-header">Armazenamento de dados</h4>
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputSTOSpeed">Leitura / Gravação</label>
+					<input id="inputSTOSpeed" type="text" class="form-control" placeholder="Velocidade (MB/s)" th:field="*{storage.velocidade}">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputRAMSize">Capacidade</label>
+					<select id="inputRAMSize" class="form-control selectpicker" th:field="*{storage.capacidade}">
+						<option value="">Selecione o tamanho</option>
+	                	<option value="120">120 GB</option>
+	                   	<option value="250">250 GB</option>
+	                   	<option value="500">500 GB</option>
+	                   	<option value="1000">1 TB</option>
+	                   	<option value="1500">1.5 TB</option>
+	                   	<option value="2000">2 TB</option>
+	                   	<option value="4000">4 TB</option>
+					</select>
+				</div>
+			</div>
+			
+			<!-- FONTE -->
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="page-header">Fonte de Alimentação</h4>
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputPSUPot">Potência</label>
+					<input id="inputPSUPot" type="text" class="form-control" placeholder="Potência (watts)" th:field="*{fonte.potencia}">
+				</div>
+				<div class="col-md-3 form-group">
+					<label for="inputPSUSeal">Selo Fonte</label>
+					<select id="inputPSUSeal" class="form-control selectpicker" th:field="*{fonte.eficiencia}">
+						<option value="">Selecione o tipo da fonte</option>
+	                	<option value="50">Fonte Genérica</option>
+	                   	<option value="80">80 Plus Bronze</option>
+	                   	<option value="85">80 Plus Silver</option>
+	                   	<option value="90">80 Plus Gold</option>
+	                   	<option value="95">80 Plus Platinum</option>
+					</select>
+				</div>
+			</div>
+			
+			<hr>
+		
+			<div class="form-group">
+				<button type="submit" class="btn btn-secondary btn-lg pull-right">
+					<span class="glyphicon glyphicon-search"></span> Pesquisar
+				</button>
+			</div>
+			
+		</form>
+		
+		<br>
+		<br>
+		<hr>
+		
+		<!-- Footer -->
+		<footer>
+			<div class="row">
+				<div class="col-md-12">
+					<p>UNIVALI - Universidade do Vale do Itajaí</p>
+				</div>
+				<!-- /.col-md-12 -->
+			</div>
+			<!-- /.row -->
+		</footer>
+       </div>
+       
 	
     <!-- jQuery -->
     <script src="layout/js/jquery.js"></script>
@@ -86,6 +256,9 @@
 	<!-- Scrolling Nav JavaScript -->
     <script src="layout/js/jquery.easing.min.js"></script>
     <script src="layout/js/scrolling-nav.js"></script>
+	
+	<script src="layout/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+<!-- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/i18n/defaults-*.min.js"></script>		 -->
 	
 </body>
 
