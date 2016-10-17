@@ -26,8 +26,9 @@ public class ComputerController {
 	}
 	
 	@RequestMapping(value = "/pesquisa", method = RequestMethod.POST)
-	public ModelAndView searchConfigurationResult(Configuracao configuracao) {
-		return new ModelAndView();
+	public ModelAndView searchConfigurationResult(Configuracao searchConfig, BindingResult result, Model model, RedirectAttributes redAttributes) {
+		
+		return new ModelAndView("redirect:/resultadoPesquisa");
 	}
 
 	
