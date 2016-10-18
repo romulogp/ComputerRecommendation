@@ -7,7 +7,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class CPU extends Dispositivo {
+public class CPU extends Dispositivo implements ISimilaridade<CPU> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -61,6 +61,11 @@ public class CPU extends Dispositivo {
 
 	public void setTdp(Integer tdp) {
 		this.tdp = tdp;
+	}
+
+	@Override
+	public Double similaridadeCom(CPU obj) {
+		return null;
 	}
 
 }

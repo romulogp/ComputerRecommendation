@@ -5,7 +5,7 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
-public class Storage extends Dispositivo {
+public class Storage extends Dispositivo implements ISimilaridade<Storage> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -33,6 +33,11 @@ public class Storage extends Dispositivo {
 
 	public void setVelocidade(Double velocidade) {
 		this.velocidade = velocidade;
+	}
+
+	@Override
+	public Double similaridadeCom(Storage storage) {
+		return null;
 	}
 
 }

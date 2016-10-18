@@ -5,7 +5,7 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
-public class Memoria extends Dispositivo {
+public class Memoria extends Dispositivo implements ISimilaridade<Memoria> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -33,6 +33,11 @@ public class Memoria extends Dispositivo {
 
 	public void setTamanho(Integer tamanho) {
 		this.tamanho = tamanho;
+	}
+
+	@Override
+	public Double similaridadeCom(Memoria memoria) {
+		return null;
 	}
 
 }

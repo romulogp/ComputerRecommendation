@@ -13,12 +13,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.rgp.rbc.model.Configuracao;
 import br.com.rgp.rbc.service.IConfiguracaoService;
+import br.com.rgp.rbc.service.IRecommendationService;
 
 @Controller
 public class ComputerController {
 
 	@Autowired
 	private IConfiguracaoService configuracaoService;
+	
+	@Autowired
+	private IRecommendationService recommendationService;
 
 	@RequestMapping("/pesquisa")
 	public String search(Configuracao configuracao) {
@@ -27,6 +31,8 @@ public class ComputerController {
 	
 	@RequestMapping(value = "/pesquisa", method = RequestMethod.POST)
 	public ModelAndView searchConfigurationResult(Configuracao searchConfig, BindingResult result, Model model, RedirectAttributes redAttributes) {
+		
+		model.addAttribute("configuracoes", recommendationService.searchForRecommendedConfigurations(searchConfig));
 		
 		return new ModelAndView("redirect:/resultadoPesquisa");
 	}

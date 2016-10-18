@@ -5,9 +5,31 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
-public class PlacaDeVideo extends Dispositivo {
+public class PlacaDeVideo extends Dispositivo implements ISimilaridade<PlacaDeVideo> {
 
 	private static final long serialVersionUID = 1L;
+
+	// Valores Máximos
+	private static final Integer MAX_NUCLEOS = 8;
+	private static final Double MAX_CLOCK_BASE = 2000.0;
+	private static final Double MAX_CLOCK_MEMORIA = 10.0;
+	private static final Integer MAX_TAMANHO_MEMORIA = 64;
+	private static final Double MAX_CONSUMO = 250.0;
+	private static final Integer MAX_BITS = 364;
+	private static final Double MAX_LARGURA_BANDA = 600.0;
+	private static final Double MAX_COMPRIMENTO = 40.0;
+	private static final Double MAX_TEMP_MAXIMA = 130.0;
+
+	// Pesos
+	private static final Double PESO_NUCLEOS = 0.7;
+	private static final Double PESO_CLOCK_BASE = 0.3;
+	private static final Double PESO_CLOCK_MEMORIA = 0.5;
+	private static final Double PESO_TAMANHO_MEMORIA = 0.5;
+	private static final Double PESO_CONSUMO = 0.1;
+	private static final Double PESO_BITS = 0.1;
+	private static final Double PESO_LARGURA_BANDA = 0.3;
+	private static final Double PESO_COMPRIMENTO = 0.7;
+	private static final Double PESO_TEMP_MAXIMA = 0.3;
 
 	@Column(nullable = false)
 	@NotNull
@@ -124,6 +146,20 @@ public class PlacaDeVideo extends Dispositivo {
 
 	public void setTemperaturaMaxima(Double temperaturaMaxima) {
 		this.temperaturaMaxima = temperaturaMaxima;
+	}
+
+	@Override
+	public Double similaridadeCom(PlacaDeVideo placaDeVideo) {
+		Double similaridade = 0.0;
+		similaridade += (PESO_BITS * (Math.abs(placaDeVideo.getBits() - this.getBits())));
+
+		return normalizarSimilaridade(similaridade);
+	}
+
+	private Double normalizarSimilaridade(Double valorOriginal) {
+		Double somatorioPesos = PESO_BITS + PESO_CLOCK_BASE + PESO_CLOCK_MEMORIA + PESO_COMPRIMENTO + PESO_CONSUMO + PESO_LARGURA_BANDA
+				+ PESO_NUCLEOS + PESO_TAMANHO_MEMORIA + PESO_TEMP_MAXIMA;
+		return valorOriginal / somatorioPesos;
 	}
 
 }

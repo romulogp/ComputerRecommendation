@@ -1,7 +1,7 @@
 package br.com.rgp.rbc.model;
 
-public interface ISimilaridade {
+public interface ISimilaridade<T> {
 
-	
+	public Double similaridadeCom(T obj);
 	
 }
