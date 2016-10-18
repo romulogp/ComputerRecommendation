@@ -9,4 +9,9 @@ public class PlacaMae extends Dispositivo implements ISimilaridade<PlacaMae> {
 		return 0.0;
 	}
 
+	@Override
+	public Double getSomatorioPesos() {
+		return 0.0;
+	}
+
 }

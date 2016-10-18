@@ -18,7 +18,6 @@ public class RecommendationCore {
 		for (Configuracao dbConf : database) {
 			searchResult.add(new ConfiguracaoSimilaridade(dbConf, avaliarSimilidaridade(c, dbConf)));
 		}
-		
 		return searchResult;
 	}
 	

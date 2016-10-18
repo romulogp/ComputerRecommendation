@@ -14,12 +14,11 @@ public class Fonte extends Dispositivo implements ISimilaridade<Fonte> {
 	// Valores Mínimos
 	private static final Double MIN_POTENCIA = 0.0;
 	private static final Double MIN_EFICIENCIA = 0.0;
-	
-	
+
 	// Pesos
-	private static final Double PESO_POTENCIA = 0.7;
-	private static final Double PESO_EFICIENCIA = 0.8;
-	
+	private Double pesoPotencia;
+	private Double pesoEficiencia;
+
 	@Column(nullable = false)
 	@NotNull
 	@DecimalMin(value = "0")
@@ -30,6 +29,45 @@ public class Fonte extends Dispositivo implements ISimilaridade<Fonte> {
 	@DecimalMin(value = "0")
 	private Integer eficiencia;
 
+	public Fonte() {
+		pesoPotencia = 0.7;
+		pesoEficiencia = 0.8;
+	}
+
+	@Override
+	public Double similaridadeCom(Fonte fonte) {
+		Double similaridade = 0.0;
+
+		similaridade += pesoEficiencia
+				* (1 - ((Math.abs(this.getEficiencia() - fonte.getEficiencia())) / (double)(MAX_EFICIENCIA - MIN_EFICIENCIA)));
+		similaridade += pesoPotencia
+				* (1 - ((Math.abs(this.getPotencia() - fonte.getPotencia())) / (double)(MAX_POTENCIA - MIN_POTENCIA)));
+
+		return similaridade;
+	}
+
+	@Override
+	public Double getSomatorioPesos() {
+		return pesoEficiencia + pesoPotencia;
+	}
+
+	
+	public Double getPesoPotencia() {
+		return pesoPotencia;
+	}
+
+	public void setPesoPotencia(Double pesoPotencia) {
+		this.pesoPotencia = pesoPotencia;
+	}
+
+	public Double getPesoEficiencia() {
+		return pesoEficiencia;
+	}
+
+	public void setPesoEficiencia(Double pesoEficiencia) {
+		this.pesoEficiencia = pesoEficiencia;
+	}
+	
 	public Integer getPotencia() {
 		return potencia;
 	}
@@ -46,33 +84,5 @@ public class Fonte extends Dispositivo implements ISimilaridade<Fonte> {
 		this.eficiencia = eficiencia;
 	}
 
-	@Override
-	public Double similaridadeCom(Fonte fonte) {
-		Double similaridade = 0.0;
-		
-		similaridade += PESO_EFICIENCIA * (1 - ((Math.abs(this.getEficiencia() - fonte.getEficiencia())) / (MAX_EFICIENCIA - MIN_EFICIENCIA)));
-		similaridade += PESO_POTENCIA * (1 - ((Math.abs(this.getPotencia() - fonte.getPotencia())) / (MAX_POTENCIA - MIN_POTENCIA)));
-		return normalizarSimilaridade(similaridade);
-	}
-	
-	private Double normalizarSimilaridade(Double valorOriginal) {
-		Double somatorioPesos = (double) (PESO_EFICIENCIA + PESO_POTENCIA);
-		System.out.println(valorOriginal);
-		System.out.println(somatorioPesos);
-		
-		return valorOriginal / somatorioPesos;
-	}
-	
-	public static void main(String[] args) {
-		Fonte f1 = new Fonte();
-		f1.setEficiencia(80);
-		f1.setPotencia(750);
-		
-		Fonte f2 = new Fonte();
-		f2.setPotencia(750);
-		f2.setEficiencia(80);
-		
-		System.out.println(f1.similaridadeCom(f2));
-	}
 	
 }

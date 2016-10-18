@@ -12,115 +12,140 @@ public class Configuracao implements ISimilaridade<Configuracao> {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cpu_id")
-    private CPU cpu;
-	
+	private CPU cpu;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fonte_id")
-    private Fonte fonte;
-	
+	private Fonte fonte;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ram_id")
-    private Memoria ram;
-    
+	private Memoria ram;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "placa_de_video_id")
-    private PlacaDeVideo placaDeVideo;
-	
+	private PlacaDeVideo placaDeVideo;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "placa_mae_id")
-    private PlacaMae placaMae;
-	
+	private PlacaMae placaMae;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "storage_id")
-    private Storage storage;
+	private Storage storage;
 
-    /**
-     * Configuração Padrão
-     */
-//    public Configuracao() {
-//        this.cpu = new CPU();
-//        this.fonte = new Fonte();
-//        this.ram = new Memoria();
-//        this.placaDeVideo = new PlacaDeVideo();
-//        this.placaMae = new PlacaMae();
-//        this.storage = new Storage();
-//    }
-    
-    /**
-     * Cria uma nova configuração
-     * @param cpu
-     * @param fonte
-     * @param ram
-     * @param placaDeVideo
-     * @param placaMae
-     * @param storage 
-     */
-//    public Configuracao(CPU cpu, Fonte fonte, Memoria ram, PlacaDeVideo placaDeVideo, PlacaMae placaMae, Storage storage) {
-//        this.cpu = cpu;
-//        this.fonte = fonte;
-//        this.ram = ram;
-//        this.placaDeVideo = placaDeVideo;
-//        this.placaMae = placaMae;
-//        this.storage = storage;
-//    }
+	/**
+	 * Configuração Padrão
+	 */
+	// public Configuracao() {
+	// this.cpu = new CPU();
+	// this.fonte = new Fonte();
+	// this.ram = new Memoria();
+	// this.placaDeVideo = new PlacaDeVideo();
+	// this.placaMae = new PlacaMae();
+	// this.storage = new Storage();
+	// }
 
-    @Override
-    public String toString() {
-    	Gson converter = new Gson();
-    	return converter.toJson(this);
-    }
-    
-    public CPU getCpu() {
-        return cpu;
-    }
+	/**
+	 * Cria uma nova configuração
+	 * 
+	 * @param cpu
+	 * @param fonte
+	 * @param ram
+	 * @param placaDeVideo
+	 * @param placaMae
+	 * @param storage
+	 */
+	// public Configuracao(CPU cpu, Fonte fonte, Memoria ram, PlacaDeVideo
+	// placaDeVideo, PlacaMae placaMae, Storage storage) {
+	// this.cpu = cpu;
+	// this.fonte = fonte;
+	// this.ram = ram;
+	// this.placaDeVideo = placaDeVideo;
+	// this.placaMae = placaMae;
+	// this.storage = storage;
+	// }
 
-    public void setCpu(CPU cpu) {
-        this.cpu = cpu;
-    }
+	@Override
+	public String toString() {
+		Gson converter = new Gson();
+		return converter.toJson(this);
+	}
 
-    public Fonte getFonte() {
-        return fonte;
-    }
+	public CPU getCpu() {
+		return cpu;
+	}
 
-    public void setFonte(Fonte fonte) {
-        this.fonte = fonte;
-    }
+	public void setCpu(CPU cpu) {
+		this.cpu = cpu;
+	}
 
-    public Memoria getRam() {
-        return ram;
-    }
+	public Fonte getFonte() {
+		return fonte;
+	}
 
-    public void setRam(Memoria ram) {
-        this.ram = ram;
-    }
+	public void setFonte(Fonte fonte) {
+		this.fonte = fonte;
+	}
 
-    public PlacaDeVideo getPlacaDeVideo() {
-        return placaDeVideo;
-    }
+	public Memoria getRam() {
+		return ram;
+	}
 
-    public void setPlacaDeVideo(PlacaDeVideo placaDeVideo) {
-        this.placaDeVideo = placaDeVideo;
-    }
+	public void setRam(Memoria ram) {
+		this.ram = ram;
+	}
 
-    public PlacaMae getPlacaMae() {
-        return placaMae;
-    }
+	public PlacaDeVideo getPlacaDeVideo() {
+		return placaDeVideo;
+	}
 
-    public void setPlacaMae(PlacaMae placaMae) {
-        this.placaMae = placaMae;
-    }
+	public void setPlacaDeVideo(PlacaDeVideo placaDeVideo) {
+		this.placaDeVideo = placaDeVideo;
+	}
 
-    public Storage getStorage() {
-        return storage;
-    }
+	public PlacaMae getPlacaMae() {
+		return placaMae;
+	}
 
-    public void setStorage(Storage storage) {
-        this.storage = storage;
-    }
+	public void setPlacaMae(PlacaMae placaMae) {
+		this.placaMae = placaMae;
+	}
+
+	public Storage getStorage() {
+		return storage;
+	}
+
+	public void setStorage(Storage storage) {
+		this.storage = storage;
+	}
 
 	@Override
 	public Double similaridadeCom(Configuracao configuracao) {
-		return null;
+		Double somatorioSimilaridades = 0.0;
+		somatorioSimilaridades += this.getCpu().similaridadeCom(configuracao.getCpu());
+		somatorioSimilaridades += this.getFonte().similaridadeCom(configuracao.getFonte());
+		somatorioSimilaridades += this.getPlacaDeVideo().similaridadeCom(configuracao.getPlacaDeVideo());
+		somatorioSimilaridades += this.getRam().similaridadeCom(configuracao.getRam());
+		somatorioSimilaridades += this.getStorage().similaridadeCom(configuracao.getStorage());
+		
+		return normalizarSimilaridade(somatorioSimilaridades, getSomatorioPesos());
 	}
 
+	@Override
+	public Double getSomatorioPesos() {
+		return cpu.getSomatorioPesos()
+				+ fonte.getSomatorioPesos()
+				+ ram.getSomatorioPesos()
+				+ placaDeVideo.getSomatorioPesos()
+				+ placaMae.getSomatorioPesos()
+				+ storage.getSomatorioPesos();
+	}
+
+	private Double normalizarSimilaridade(Double valorOriginal, Double somatorioPesos) {
+		System.out.println(valorOriginal + " / " + somatorioPesos);
+		return valorOriginal / somatorioPesos;
+	}
+
+	
 }

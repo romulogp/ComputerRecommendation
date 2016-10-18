@@ -4,4 +4,6 @@ public interface ISimilaridade<T> {
 
 	public Double similaridadeCom(T obj);
 	
+	public Double getSomatorioPesos();
+	
 }
