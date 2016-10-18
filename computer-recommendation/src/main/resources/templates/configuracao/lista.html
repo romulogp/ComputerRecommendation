@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
+	xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -8,7 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Rômulo Göelzer Portolann">
+    <meta name="author" content="Thalyson Zatt">
 
     <title>Computer Recommendation RBC</title>
 
@@ -77,12 +78,12 @@
 					</tr>
 			  	</thead>
 				<tr th:each="config : ${configuracoes}">
-					<td th:text="${config.cpu.marca + ' ' + config.cpu.modelo}"</td>
-					<td th:text="${config.placaMae.marca + ' ' + config.placaMae.modelo}"</td>
-					<td th:text="${config.placaDeVideo.marca + ' ' + config.placaDeVideo.modelo}"</td>
-					<td th:text="${config.ram.marca + ' ' + config.ram.modelo}"</td>
-					<td th:text="${config.storage.marca + ' ' + config.storage.modelo}"</td>
-					<td th:text="${config.fonte.marca + ' ' + config.fonte.modelo}"</td>
+					<td th:text="${config.cpu.marca + ' ' + config.cpu.modelo}"></td>
+					<td th:text="${config.placaMae.marca + ' ' + config.placaMae.modelo}"></td>
+					<td th:text="${config.placaDeVideo.marca + ' ' + config.placaDeVideo.modelo}"></td>
+					<td th:text="${config.ram.marca + ' ' + config.ram.modelo}"></td>
+					<td th:text="${config.storage.marca + ' ' + config.storage.modelo}"></td>
+					<td th:text="${config.fonte.marca + ' ' + config.fonte.modelo}"></td>
 				</tr>
 			</table>
 		</div>

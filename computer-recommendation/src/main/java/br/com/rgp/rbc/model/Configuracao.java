@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 import com.google.gson.Gson;
 
 @Entity
-public class Configuracao {
+public class Configuracao implements ISimilaridade<Configuracao> {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cpu_id")
@@ -117,5 +117,10 @@ public class Configuracao {
     public void setStorage(Storage storage) {
         this.storage = storage;
     }
+
+	@Override
+	public Double similaridadeCom(Configuracao configuracao) {
+		return null;
+	}
 
 }
