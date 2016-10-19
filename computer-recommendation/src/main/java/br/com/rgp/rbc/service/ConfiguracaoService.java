@@ -17,8 +17,8 @@ import br.com.rgp.rbc.model.Configuracao;
 @Service
 public class ConfiguracaoService implements IConfiguracaoService {
 
-	private static final String DB_FILE_NAME = "database";
-	private static final String DB_FILE_PATH = Paths.get("").toAbsolutePath().toString() + File.separator + DB_FILE_NAME;
+	public static final String DB_FILE_NAME = "database";
+	public static final String DB_FILE_PATH = Paths.get("").toAbsolutePath().toString() + File.separator + DB_FILE_NAME;
 	
 	@SuppressWarnings({ "deprecation" })
 	@Override

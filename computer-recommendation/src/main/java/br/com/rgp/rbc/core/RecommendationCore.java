@@ -13,8 +13,8 @@ public class RecommendationCore {
 		
 		for (Configuracao dbConf : database) {
 			searchResult.add(new ConfiguracaoSimilaridade(dbConf, c.similaridadeCom(dbConf)));
-			System.out.println("Similaridade: " + searchResult.get(searchResult.size()-1).getSimilaridade());
 		}
+		
 		return searchResult;
 	}
 	

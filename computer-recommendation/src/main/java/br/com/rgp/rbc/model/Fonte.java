@@ -9,10 +9,10 @@ public class Fonte extends Dispositivo implements ISimilaridade<Fonte> {
 	private static final long serialVersionUID = 1L;
 
 	// Valores Máximos
-	private static final Double MAX_POTENCIA = 2000.0;
+	private static final Double MAX_POTENCIA = 1500.0;
 	private static final Double MAX_EFICIENCIA = 100.0;
 	// Valores Mínimos
-	private static final Double MIN_POTENCIA = 0.0;
+	private static final Double MIN_POTENCIA = 10.0;
 	private static final Double MIN_EFICIENCIA = 0.0;
 	// Pesos
 	private Double pesoPotencia;
@@ -31,7 +31,10 @@ public class Fonte extends Dispositivo implements ISimilaridade<Fonte> {
 	public Fonte() {
 		pesoPotencia = 0.7;
 		pesoEficiencia = 0.8;
-		
+	}
+	
+	public Fonte(String teste) {
+		this();
 		super.setMarca("Corsair");
         super.setModelo("CX 600 Modular");
         this.potencia = 600;

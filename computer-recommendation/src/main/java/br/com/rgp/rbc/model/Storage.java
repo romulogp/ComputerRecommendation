@@ -14,7 +14,7 @@ public class Storage extends Dispositivo implements ISimilaridade<Storage> {
 	private static final Integer MAX_VELOCIDADE = 1000;
 	// Valores Mínimos
 	private static final Integer MIN_CAPACIDADE = 40;
-	private static final Integer MIN_VELOCIDADE = 10;
+	private static final Integer MIN_VELOCIDADE = 1;
 	// Pesos
 	private Double pesoCapacidade;
 	private Double pesoVelocidade;
@@ -32,7 +32,10 @@ public class Storage extends Dispositivo implements ISimilaridade<Storage> {
 	public Storage() {
 		pesoCapacidade = 0.5;
 		pesoVelocidade = 0.8;
-		
+	}
+
+	public Storage(String teste) {
+		this();
 		super.setMarca("Samsung");
         super.setModelo("850V EVO");
         this.capacidade = 4000;

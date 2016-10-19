@@ -80,19 +80,19 @@
 			</div>			
 			<div class="row">
 				<div class="col-md-3 form-group">
-					<label for="inputCpuNucleos">Núcleos</label>
+					<label for="inputCpuNucleos">Núcleos (0 ~ 32)</label>
 					<input id="inputCpuNucleos" type="text" class="form-control" placeholder="Quantidade de núcleos" th:field=*{cpu.nucleos}>
 				</div>
 				<div class="col-md-3 form-group">
-					<label for="inputCpuClock">Clock</label>
+					<label for="inputCpuClock">Clock (1.0 ~ 10.0) Ghz</label>
 					<input id="inputCpuClock" type="text" class="form-control" placeholder="Clock (Ghz)" th:field="*{cpu.clock}">
 				</div>
 				<div class="col-md-3 form-group">
-					<label for="inputCpuCache">Cache</label>
+					<label for="inputCpuCache">Cache (1 - 60) MB</label>
 					<input id="inputCpuCache" type="text" class="form-control" placeholder="Cache (MB)" th:field="*{cpu.cache}">
 				</div>
 				<div class="col-md-3 form-group">
-					<label for="inputCpuTDP">TDP</label>
+					<label for="inputCpuTDP">TDP (30 ~ 250) W</label>
 					<input id="inputCpuTDP" type="text" class="form-control" placeholder="TDP (watts)" th:field="*{cpu.tdp}">
 				</div>
 			</div>
@@ -103,49 +103,39 @@
 					<h4 class="page-header">Placa de Vídeo</h4>
 				</div>
 				<div class="col-md-3 form-group">
-					<label for="inputGPUNucleos">Núcleos</label>
+					<label for="inputGPUNucleos">Núcleos (1 ~ 3584)</label>
 					<input id="inputGPUNucleos" type="text" class="form-control" placeholder="Quantidade de núcleos" th:field="*{placaDeVideo.nucleos}">
 				</div>
 				<div class="col-md-3 form-group">
-					<label for="inputGPUClockB">Clock Base</label>
+					<label for="inputGPUClockB">Clock Base (250 ~ 1607) Mhz</label>
 					<input id="inputGPUClockB" type="text" class="form-control" placeholder="Clock Base (Mhz)" th:field="*{placaDeVideo.clockBase}">
 				</div>
 				<div class="col-md-3 form-group">
-					<label for="inputGPUClockM">Clock Memória</label>
+					<label for="inputGPUClockM">Clock Memória (166 ~ 10000) Mhz</label>
 					<input id="inputGPUClockM" type="text" class="form-control" placeholder="Clock Memória (Mhz)" th:field="*{placaDeVideo.clockMemoria}">
 				</div>
 				<div class="col-md-3 form-group">
-					<label for="inputGPUMemSize">Qtd. Memória</label>
-					<select id="inputGPUMemSize" class="form-control selectpicker" th:field="*{placaDeVideo.tamanhoMemoria}">
-                 		<option value="">Qtd de Memória</option>
-	                	<option value="1">1 GB</option>
-	                   	<option value="2">2 GB</option>
-	                   	<option value="3">3 GB</option>
-	                   	<option value="4">4 GB</option>
-	                   	<option value="6">6 GB</option>
-	                   	<option value="8">8 GB</option>
-	                   	<option value="12">12 GB</option>
-                   		<option value="16">16 GB</option>
-					</select>
+					<label for="inputGPUMemSize">Memória (128MB ~ 16GB)</label>
+					<input id="inputGPUMemSize" type="text" class="form-control" placeholder="Memória (MB)" th:field="*{placaDeVideo.tamanhoMemoria}">
 				</div>
 				<div class="col-md-3 form-group">
-					<label for="inputGPUConsumo">Consumo</label>
+					<label for="inputGPUConsumo">Consumo (30 ~ 250)</label>
 					<input id="inputGPUConsumo" type="text" class="form-control" placeholder="Consumo (watts)" th:field="*{placaDeVideo.consumo}">
 				</div>
 				<div class="col-md-3 form-group">
-					<label for="inputGPUBits">Bits</label>
+					<label for="inputGPUBits">Bits (64 ~ 384)</label>
 					<input id="inputGPUBits" type="text" class="form-control" placeholder="Bits" th:field="*{placaDeVideo.bits}">
 				</div>
 				<div class="col-md-3 form-group">
-					<label for="inputGPUBandW">Largura de Banda</label>
+					<label for="inputGPUBandW">Largura de Banda (2.6 ~ 512) GB/s</label>
 					<input id="inputGPUBandW" type="text" class="form-control" placeholder="Largura de banda (GB/s)" th:field="*{placaDeVideo.larguraBanda}">
 				</div>
 				<div class="col-md-3 form-group">
-					<label for="inputGPUComprim">Comprimento</label>
+					<label for="inputGPUComprim">Comprimento (10 ~ 50) cm</label>
 					<input id="inputGPUComprim" type="text" class="form-control" placeholder="Comprimento (cm)" th:field="*{placaDeVideo.comprimento}">
 				</div>
 				<div class="col-md-3 form-group">
-					<label for="inputGPUMaxTemp">Temperatura Máxima</label>
+					<label for="inputGPUMaxTemp">Temperatura Máxima (10 ~ 130)</label>
 					<input id="inputGPUMaxTemp" type="text" class="form-control" placeholder="Temperatura máxima (Cº)" th:field="*{placaDeVideo.temperaturaMaxima}">
 				</div>
 			</div>
@@ -156,7 +146,7 @@
 					<h4 class="page-header">Memória RAM</h4>
 				</div>
 				<div class="col-md-3 form-group">
-					<label for="inputRAMClock">Clock</label>
+					<label for="inputRAMClock">Clock (166 ~ 5000) Mhz</label>
 					<input id="inputRAMClock" type="text" class="form-control" placeholder="Clock (Mhz)" th:field="*{ram.clock}">
 				</div>
 				<div class="col-md-3 form-group">
@@ -180,13 +170,14 @@
 					<h4 class="page-header">Armazenamento de dados</h4>
 				</div>
 				<div class="col-md-3 form-group">
-					<label for="inputSTOSpeed">Leitura / Gravação</label>
+					<label for="inputSTOSpeed">Velocidade Leitura (1 ~ 1000) MB/s</label>
 					<input id="inputSTOSpeed" type="text" class="form-control" placeholder="Velocidade (MB/s)" th:field="*{storage.velocidade}">
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputRAMSize">Capacidade</label>
 					<select id="inputRAMSize" class="form-control selectpicker" th:field="*{storage.capacidade}">
 						<option value="">Selecione o tamanho</option>
+	                	<option value="120">60 GB</option>
 	                	<option value="120">120 GB</option>
 	                   	<option value="250">250 GB</option>
 	                   	<option value="500">500 GB</option>
@@ -204,11 +195,11 @@
 					<h4 class="page-header">Fonte de Alimentação</h4>
 				</div>
 				<div class="col-md-3 form-group">
-					<label for="inputPSUPot">Potência</label>
+					<label for="inputPSUPot">Potência (10 ~ 1500) W</label>
 					<input id="inputPSUPot" type="text" class="form-control" placeholder="Potência (watts)" th:field="*{fonte.potencia}">
 				</div>
 				<div class="col-md-3 form-group">
-					<label for="inputPSUSeal">Selo Fonte</label>
+					<label for="inputPSUSeal">Tipo</label>
 					<select id="inputPSUSeal" class="form-control selectpicker" th:field="*{fonte.eficiencia}">
 						<option value="">Selecione o tipo da fonte</option>
 	                	<option value="50">Fonte Genérica</option>
@@ -223,6 +214,9 @@
 			<hr>
 		
 			<div class="form-group">
+				<h4 class="pull-right"><small>* Campos não preenchidos serão ignorados na busca, mas não na determinação de semelhança</small></h4>
+				<br>
+				<br>
 				<button type="submit" class="btn btn-secondary btn-lg pull-right">
 					<span class="glyphicon glyphicon-search"></span> Pesquisar
 				</button>

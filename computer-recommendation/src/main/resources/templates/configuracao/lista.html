@@ -65,6 +65,7 @@
 
 	<div class="container">
 		<h2>Base de Dados</h2>
+		<h4><small>Database salvo em </small><small th:text="${localArquivo}" class="btn-link"></small></h4>
 		<div th:if="${not #lists.isEmpty(configuracoes)}">
 			<table class="table table-inverse">
 				<thead>

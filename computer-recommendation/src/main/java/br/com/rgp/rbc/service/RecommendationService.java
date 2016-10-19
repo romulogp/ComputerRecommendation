@@ -19,7 +19,7 @@ public class RecommendationService implements IRecommendationService {
 	public List<ConfiguracaoSimilaridade> searchForRecommendedConfigurations(Configuracao c) {
 		RecommendationCore core = new RecommendationCore();
 		
-		configService = new ConfiguracaoService();
+//		configService = new ConfiguracaoService();
 		List<Configuracao> database = configService.listAllConfigurations();
 		
 		return core.avaliarSimilaridades(c, database);

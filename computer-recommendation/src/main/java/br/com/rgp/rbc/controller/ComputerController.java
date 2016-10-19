@@ -1,7 +1,5 @@
 package br.com.rgp.rbc.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.rgp.rbc.model.Configuracao;
-import br.com.rgp.rbc.model.ConfiguracaoSimilaridade;
 import br.com.rgp.rbc.service.ConfiguracaoService;
 import br.com.rgp.rbc.service.IConfiguracaoService;
 import br.com.rgp.rbc.service.IRecommendationService;
-import br.com.rgp.rbc.service.RecommendationService;
 
 @Controller
 public class ComputerController {
@@ -36,22 +32,17 @@ public class ComputerController {
 	
 	@RequestMapping(value = "/pesquisa", method = RequestMethod.POST)
 	public ModelAndView searchConfigurationResult(Configuracao searchConfig, BindingResult result, Model model, RedirectAttributes redAttributes) {
-		return new ModelAndView("redirect:/resultadoPesquisa");
+		
+		model.addAttribute("configuracoes", recommendationService.searchForRecommendedConfigurations(searchConfig));
+		
+		return new ModelAndView("configuracao/resultadoPesquisa");
 	}
 
-	@RequestMapping("/resultadoPesquisa")
-	public String searchResult(Model model) {
-		List<ConfiguracaoSimilaridade> confSm = recommendationService.searchForRecommendedConfigurations(new Configuracao("teste"));
-		System.out.println(confSm.size());
-//		model.addAttribute("configuracoes", recommendationService.searchForRecommendedConfigurations(searchConfig));
-		model.addAttribute("configuracoes", confSm);
-		
-		return "configuracao/resultadoPesquisa";
-	}
-	
 	@RequestMapping("/cadastro")
 	public ModelAndView newConfiguration(Configuracao configuracao) {
-		return new ModelAndView("configuracao/cadastro");
+		ModelAndView model = new ModelAndView("configuracao/cadastro");
+		model.addObject("localArquivo", ConfiguracaoService.DB_FILE_PATH);
+		return model;
 	}
 	
 	@RequestMapping(value = "/cadastro", method = RequestMethod.POST)
@@ -70,14 +61,10 @@ public class ComputerController {
 	@RequestMapping("/database")
 	public String listConfiguration(Model model) {
 
+		model.addAttribute("localArquivo", ConfiguracaoService.DB_FILE_PATH);
 		model.addAttribute("configuracoes", configuracaoService.listAllConfigurations());
 
 		return "configuracao/lista";
 	}
 
-//	public static void main(String[] args) {
-//		IRecommendationService recommendationService = new RecommendationService();
-//		recommendationService.searchForRecommendedConfigurations(new Configuracao("teste"));
-//	}
-	
 }

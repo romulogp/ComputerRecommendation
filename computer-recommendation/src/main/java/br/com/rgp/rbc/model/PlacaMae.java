@@ -5,6 +5,11 @@ public class PlacaMae extends Dispositivo implements ISimilaridade<PlacaMae> {
 	private static final long serialVersionUID = 1L;
 
 	public PlacaMae() {
+		
+	}	
+	
+	public PlacaMae(String teste) {
+		this();
 		super.setMarca("MSI");
         super.setModelo("970 Gaming");
 	}

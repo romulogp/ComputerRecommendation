@@ -10,10 +10,10 @@ public class Memoria extends Dispositivo implements ISimilaridade<Memoria> {
 	private static final long serialVersionUID = 1L;
 
 	// Valores Máximos
-	private static final Double MAX_CLOCK = 5133.0;
+	private static final Double MAX_CLOCK = 5000.0;
 	private static final Integer MAX_TAMANHO = 16;
 	// Valores Mínimos
-	private static final Double MIN_CLOCK = 1.0;
+	private static final Double MIN_CLOCK = 166.0;
 	private static final Integer MIN_TAMANHO = 1;
 	// Pesos
 	private Double pesoClock;
@@ -32,7 +32,10 @@ public class Memoria extends Dispositivo implements ISimilaridade<Memoria> {
 	public Memoria() {
 		pesoClock = 0.3;
 		pesoTamanho = 0.9;
-		
+	}
+	
+	public Memoria(String teste) {
+		this();
 		super.setMarca("Kingston");
 		super.setModelo("Hyper X");
 		this.clock = 2133.0;

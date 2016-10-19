@@ -67,7 +67,7 @@
 
 	<div class="container">
 		<h2>Cadastro de Configuração</h2>
-		
+
 		<form method="POST" th:object="${configuracao}" class="form-vertical js-form-loading">
 			
 			<th:block th:include="fragments/ValidationErrorMessages"></th:block>
@@ -169,17 +169,7 @@
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUMemSize">Qtd. Memória</label>
-					<select id="inputGPUMemSize" class="form-control selectpicker" th:field="*{placaDeVideo.tamanhoMemoria}">
-                 		<option value="">Selecione a quantidade</option>
-	                	<option value="1">1 GB</option>
-	                   	<option value="2">2 GB</option>
-	                   	<option value="3">3 GB</option>
-	                   	<option value="4">4 GB</option>
-	                   	<option value="6">6 GB</option>
-	                   	<option value="8">8 GB</option>
-	                   	<option value="12">12 GB</option>
-                   		<option value="16">16 GB</option>
-					</select>
+					<input id="inputGPUMemSize" type="text" class="form-control" placeholder="Memória (MB)" th:field="*{placaDeVideo.tamanhoMemoria}">
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUConsumo">Consumo</label>
@@ -344,6 +334,7 @@
 				<button type="submit" class="btn btn-primary">
 					<span class="glyphicon glyphicon-ok"></span> Salvar
 				</button>
+				<h4><small>As configurações serão salvas em </small><small th:text="${localArquivo}" class="btn-link"></small></h4>
 			</div>
 			
 			

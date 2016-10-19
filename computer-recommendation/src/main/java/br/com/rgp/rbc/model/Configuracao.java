@@ -42,12 +42,12 @@ public class Configuracao implements ISimilaridade<Configuracao> {
 	 * Configuração de teste
 	 */
 	public Configuracao(String teste) {
-		this.cpu = new CPU();
-		this.fonte = new Fonte();
-		this.ram = new Memoria();
-		this.placaDeVideo = new PlacaDeVideo();
-		this.placaMae = new PlacaMae();
-		this.storage = new Storage();
+		this.cpu = new CPU(teste);
+		this.fonte = new Fonte(teste);
+		this.ram = new Memoria(teste);
+		this.placaDeVideo = new PlacaDeVideo(teste);
+		this.placaMae = new PlacaMae(teste);
+		this.storage = new Storage(teste);
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class Configuracao implements ISimilaridade<Configuracao> {
 	public Double getSomatorioPesos() {
 		return cpu.getSomatorioPesos() + fonte.getSomatorioPesos()
 				+ ram.getSomatorioPesos() + placaDeVideo.getSomatorioPesos() 
-				+ placaMae.getSomatorioPesos() + storage.getSomatorioPesos();
+				+ storage.getSomatorioPesos();
 	}
 
 	private Double normalizarSimilaridade(Double valorOriginal, Double somatorioPesos) {

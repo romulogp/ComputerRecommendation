@@ -13,7 +13,7 @@ public class PlacaDeVideo extends Dispositivo implements ISimilaridade<PlacaDeVi
 	private static final Integer MAX_NUCLEOS = 3584;
 	private static final Double MAX_CLOCK_BASE = 1607.0;
 	private static final Double MAX_CLOCK_MEMORIA = 10000.0;
-	private static final Integer MAX_TAMANHO_MEMORIA = 64;
+	private static final Integer MAX_TAMANHO_MEMORIA = 16384;
 	private static final Double MAX_CONSUMO = 250.0;
 	private static final Integer MAX_BITS = 384;
 	private static final Double MAX_LARGURA_BANDA = 512.0;
@@ -23,12 +23,12 @@ public class PlacaDeVideo extends Dispositivo implements ISimilaridade<PlacaDeVi
 	private static final Integer MIN_NUCLEOS = 1;
 	private static final Double MIN_CLOCK_BASE = 250.0;
 	private static final Double MIN_CLOCK_MEMORIA = 166.0;
-	private static final Integer MIN_TAMANHO_MEMORIA = 0;
+	private static final Integer MIN_TAMANHO_MEMORIA = 128;
 	private static final Double MIN_CONSUMO = 0.0;
 	private static final Integer MIN_BITS = 64;
 	private static final Double MIN_LARGURA_BANDA = 2.6;
 	private static final Double MIN_COMPRIMENTO = 10.0;
-	private static final Double MIN_TEMP_MAXIMA = 0.0;
+	private static final Double MIN_TEMP_MAXIMA = 10.0;
 
 	// Pesos
 	private Double pesoNucleos;
@@ -96,7 +96,10 @@ public class PlacaDeVideo extends Dispositivo implements ISimilaridade<PlacaDeVi
 		pesoLarguraBanda = 0.5;
 		pesoComprimento = 0.8;
 		pesoTempMaxima = 0.2;
-		
+	}
+	
+	public PlacaDeVideo(String teste) {
+		this();
 		super.setMarca("NVidia");
         super.setModelo("GTX 780 Ti");
         this.nucleos = 2280;

@@ -15,12 +15,12 @@ public class CPU extends Dispositivo implements ISimilaridade<CPU> {
 	private static final Integer MAX_NUCLEOS = 32;
 	private static final Double MAX_CLOCK = 10.0;
 	private static final Integer MAX_CACHE = 60;
-	private static final Integer MAX_TDP = 200;
+	private static final Integer MAX_TDP = 250;
 	// Valores Mínimos
 	private static final Integer MIN_NUCLEOS = 1;
 	private static final Double MIN_CLOCK = 1.0;
 	private static final Integer MIN_CACHE = 1;
-	private static final Integer MIN_TDP = 50;
+	private static final Integer MIN_TDP = 30;
 
 	// Pesos
 	private Double pesoNucleos;
@@ -53,7 +53,10 @@ public class CPU extends Dispositivo implements ISimilaridade<CPU> {
 		pesoClock = 0.8;
 		pesoCache = 0.6;
 		pesoTdp = 0.1;
-		
+	}
+	
+	public CPU(String teste) {
+		this();
 		super.setMarca("Intel");
         super.setModelo("Core I7 4790K");
         this.nucleos = 8;
@@ -72,7 +75,7 @@ public class CPU extends Dispositivo implements ISimilaridade<CPU> {
 				pesoClock * (1 - ((Math.abs(this.getClock() - obj.getClock())) / (double)(MAX_CLOCK - MIN_CLOCK)));
 		similaridade += this.getCache() == null || obj.getCache() == null ? 0 :
 				pesoCache * (1 - ((Math.abs(this.getCache() - obj.getCache())) / (double)(MAX_CACHE - MIN_CACHE)));
-		similaridade += this.getPesoTdp() == null || obj.getTdp() == null ? 0 :
+		similaridade += this.getTdp() == null || obj.getTdp() == null ? 0 :
 				pesoTdp * (1 - ((Math.abs(this.getTdp() - obj.getTdp())) / (double)(MAX_TDP - MIN_TDP)));
 
 		return similaridade;
