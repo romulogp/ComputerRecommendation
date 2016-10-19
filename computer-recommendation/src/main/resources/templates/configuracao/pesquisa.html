@@ -4,26 +4,26 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
     <title>Computer Recommendation RBC</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="layout/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="layout/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
 	<!-- Bootstrap Select -->
-	<link href="layout/vendor/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet">
+	<link href="layout/vendor/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" />
 	
 	<!-- Font Awesome -->
-	<link href="layout/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="layout/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 	
     <!-- Custom CSS -->
-    <link href="layout/css/business-frontpage.css" rel="stylesheet">
-	<link href="layout/css/scrolling-nav.css" rel="stylesheet">
+    <link href="layout/css/business-frontpage.css" rel="stylesheet" />
+	<link href="layout/css/scrolling-nav.css" rel="stylesheet" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -67,6 +67,7 @@
 
 	<div class="container">
 		<h2>Buscar Recomendação</h2>
+		<h4><small>Informe a configuração para calcular a similaridade</small></h4>
 		
 		<form method="POST" th:object="${configuracao}" class="form-vertical js-form-loading">
 			
@@ -81,19 +82,19 @@
 			<div class="row">
 				<div class="col-md-3 form-group">
 					<label for="inputCpuNucleos">Núcleos (0 ~ 32)</label>
-					<input id="inputCpuNucleos" type="text" class="form-control" placeholder="Quantidade de núcleos" th:field=*{cpu.nucleos}>
+					<input id="inputCpuNucleos" type="text" class="form-control" placeholder="Quantidade de núcleos" th:field="*{cpu.nucleos}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputCpuClock">Clock (1.0 ~ 10.0) Ghz</label>
-					<input id="inputCpuClock" type="text" class="form-control" placeholder="Clock (Ghz)" th:field="*{cpu.clock}">
+					<input id="inputCpuClock" type="text" class="form-control" placeholder="Clock (Ghz)" th:field="*{cpu.clock}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputCpuCache">Cache (1 - 60) MB</label>
-					<input id="inputCpuCache" type="text" class="form-control" placeholder="Cache (MB)" th:field="*{cpu.cache}">
+					<input id="inputCpuCache" type="text" class="form-control" placeholder="Cache (MB)" th:field="*{cpu.cache}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputCpuTDP">TDP (30 ~ 250) W</label>
-					<input id="inputCpuTDP" type="text" class="form-control" placeholder="TDP (watts)" th:field="*{cpu.tdp}">
+					<input id="inputCpuTDP" type="text" class="form-control" placeholder="TDP (watts)" th:field="*{cpu.tdp}" />
 				</div>
 			</div>
 			
@@ -104,39 +105,39 @@
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUNucleos">Núcleos (1 ~ 3584)</label>
-					<input id="inputGPUNucleos" type="text" class="form-control" placeholder="Quantidade de núcleos" th:field="*{placaDeVideo.nucleos}">
+					<input id="inputGPUNucleos" type="text" class="form-control" placeholder="Quantidade de núcleos" th:field="*{placaDeVideo.nucleos}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUClockB">Clock Base (250 ~ 1607) Mhz</label>
-					<input id="inputGPUClockB" type="text" class="form-control" placeholder="Clock Base (Mhz)" th:field="*{placaDeVideo.clockBase}">
+					<input id="inputGPUClockB" type="text" class="form-control" placeholder="Clock Base (Mhz)" th:field="*{placaDeVideo.clockBase}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUClockM">Clock Memória (166 ~ 10000) Mhz</label>
-					<input id="inputGPUClockM" type="text" class="form-control" placeholder="Clock Memória (Mhz)" th:field="*{placaDeVideo.clockMemoria}">
+					<input id="inputGPUClockM" type="text" class="form-control" placeholder="Clock Memória (Mhz)" th:field="*{placaDeVideo.clockMemoria}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUMemSize">Memória (128MB ~ 16GB)</label>
-					<input id="inputGPUMemSize" type="text" class="form-control" placeholder="Memória (MB)" th:field="*{placaDeVideo.tamanhoMemoria}">
+					<input id="inputGPUMemSize" type="text" class="form-control" placeholder="Memória (MB)" th:field="*{placaDeVideo.tamanhoMemoria}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUConsumo">Consumo (30 ~ 250)</label>
-					<input id="inputGPUConsumo" type="text" class="form-control" placeholder="Consumo (watts)" th:field="*{placaDeVideo.consumo}">
+					<input id="inputGPUConsumo" type="text" class="form-control" placeholder="Consumo (watts)" th:field="*{placaDeVideo.consumo}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUBits">Bits (64 ~ 384)</label>
-					<input id="inputGPUBits" type="text" class="form-control" placeholder="Bits" th:field="*{placaDeVideo.bits}">
+					<input id="inputGPUBits" type="text" class="form-control" placeholder="Bits" th:field="*{placaDeVideo.bits}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUBandW">Largura de Banda (2.6 ~ 512) GB/s</label>
-					<input id="inputGPUBandW" type="text" class="form-control" placeholder="Largura de banda (GB/s)" th:field="*{placaDeVideo.larguraBanda}">
+					<input id="inputGPUBandW" type="text" class="form-control" placeholder="Largura de banda (GB/s)" th:field="*{placaDeVideo.larguraBanda}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUComprim">Comprimento (10 ~ 50) cm</label>
-					<input id="inputGPUComprim" type="text" class="form-control" placeholder="Comprimento (cm)" th:field="*{placaDeVideo.comprimento}">
+					<input id="inputGPUComprim" type="text" class="form-control" placeholder="Comprimento (cm)" th:field="*{placaDeVideo.comprimento}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUMaxTemp">Temperatura Máxima (10 ~ 130)</label>
-					<input id="inputGPUMaxTemp" type="text" class="form-control" placeholder="Temperatura máxima (Cº)" th:field="*{placaDeVideo.temperaturaMaxima}">
+					<input id="inputGPUMaxTemp" type="text" class="form-control" placeholder="Temperatura máxima (Cº)" th:field="*{placaDeVideo.temperaturaMaxima}" />
 				</div>
 			</div>
 			
@@ -147,7 +148,7 @@
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputRAMClock">Clock (166 ~ 5000) Mhz</label>
-					<input id="inputRAMClock" type="text" class="form-control" placeholder="Clock (Mhz)" th:field="*{ram.clock}">
+					<input id="inputRAMClock" type="text" class="form-control" placeholder="Clock (Mhz)" th:field="*{ram.clock}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputRAMSize">Tamanho</label>
@@ -171,7 +172,7 @@
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputSTOSpeed">Velocidade Leitura (1 ~ 1000) MB/s</label>
-					<input id="inputSTOSpeed" type="text" class="form-control" placeholder="Velocidade (MB/s)" th:field="*{storage.velocidade}">
+					<input id="inputSTOSpeed" type="text" class="form-control" placeholder="Velocidade (MB/s)" th:field="*{storage.velocidade}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputRAMSize">Capacidade</label>
@@ -196,7 +197,7 @@
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputPSUPot">Potência (10 ~ 1500) W</label>
-					<input id="inputPSUPot" type="text" class="form-control" placeholder="Potência (watts)" th:field="*{fonte.potencia}">
+					<input id="inputPSUPot" type="text" class="form-control" placeholder="Potência (watts)" th:field="*{fonte.potencia}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputPSUSeal">Tipo</label>
@@ -211,12 +212,12 @@
 				</div>
 			</div>
 			
-			<hr>
+			<hr />
 		
 			<div class="form-group">
-				<h4 class="pull-right"><small>* Campos não preenchidos serão ignorados na busca, mas não na determinação de semelhança</small></h4>
-				<br>
-				<br>
+				<h4 class="pull-right"><small>* Campos não preenchidos serão ignorados na busca, mas não na determinação de similaridade</small></h4>
+				<br />
+				<br />
 				<button type="submit" class="btn btn-secondary btn-lg pull-right">
 					<span class="glyphicon glyphicon-search"></span> Pesquisar
 				</button>
@@ -224,9 +225,9 @@
 			
 		</form>
 		
-		<br>
-		<br>
-		<hr>
+		<br />
+		<br />
+		<hr />
 		
 		<!-- Footer -->
 		<footer>

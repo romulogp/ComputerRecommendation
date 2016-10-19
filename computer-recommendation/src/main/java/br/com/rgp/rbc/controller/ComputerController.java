@@ -33,6 +33,7 @@ public class ComputerController {
 	@RequestMapping(value = "/pesquisa", method = RequestMethod.POST)
 	public ModelAndView searchConfigurationResult(Configuracao searchConfig, BindingResult result, Model model, RedirectAttributes redAttributes) {
 		
+		model.addAttribute("searchConfig", searchConfig);
 		model.addAttribute("configuracoes", recommendationService.searchForRecommendedConfigurations(searchConfig));
 		
 		return new ModelAndView("configuracao/resultadoPesquisa");

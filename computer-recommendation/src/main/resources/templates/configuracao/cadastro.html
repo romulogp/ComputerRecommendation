@@ -4,26 +4,26 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
     <title>Computer Recommendation RBC</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="layout/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="layout/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
 	<!-- Bootstrap Select -->
-	<link href="layout/vendor/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet">
+	<link href="layout/vendor/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" />
 	
 	<!-- Font Awesome -->
-	<link href="layout/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="layout/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 	
     <!-- Custom CSS -->
-    <link href="layout/css/business-frontpage.css" rel="stylesheet">
-	<link href="layout/css/scrolling-nav.css" rel="stylesheet">
+    <link href="layout/css/business-frontpage.css" rel="stylesheet" />
+	<link href="layout/css/scrolling-nav.css" rel="stylesheet" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -87,25 +87,25 @@
                 </div>
                 <div class="col-md-3 form-group">
                 	<label for="inputCpuModelo">Modelo</label>
-                	<input id="inputCpuModelo" type="text" class="form-control" placeholder="Modelo" th:field="*{cpu.modelo}">
+                	<input id="inputCpuModelo" type="text" class="form-control" placeholder="Modelo" th:field="*{cpu.modelo}" />
                 </div>
 			</div>			
 			<div class="row">
 				<div class="col-md-3 form-group">
 					<label for="inputCpuNucleos">Núcleos</label>
-					<input id="inputCpuNucleos" type="text" class="form-control" placeholder="Quantidade de núcleos" th:field=*{cpu.nucleos}>
+					<input id="inputCpuNucleos" type="text" class="form-control" placeholder="Quantidade de núcleos" th:field="*{cpu.nucleos}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputCpuClock">Clock</label>
-					<input id="inputCpuClock" type="text" class="form-control" placeholder="Clock (Ghz)" th:field="*{cpu.clock}">
+					<input id="inputCpuClock" type="text" class="form-control" placeholder="Clock (Ghz)" th:field="*{cpu.clock}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputCpuCache">Cache</label>
-					<input id="inputCpuCache" type="text" class="form-control" placeholder="Cache (MB)" th:field="*{cpu.cache}">
+					<input id="inputCpuCache" type="text" class="form-control" placeholder="Cache (MB)" th:field="*{cpu.cache}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputCpuTDP">TDP</label>
-					<input id="inputCpuTDP" type="text" class="form-control" placeholder="TDP (watts)" th:field="*{cpu.tdp}">
+					<input id="inputCpuTDP" type="text" class="form-control" placeholder="TDP (watts)" th:field="*{cpu.tdp}" />
 				</div>
 			</div>
 			
@@ -127,7 +127,7 @@
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputPlacaMaeModelo">Modelo</label>
-					<input id="inputPlacaMaeModelo" type="text" class="form-control" placeholder="Modelo" th:field="*{placaMae.modelo}">
+					<input id="inputPlacaMaeModelo" type="text" class="form-control" placeholder="Modelo" th:field="*{placaMae.modelo}" />
 				</div>
 			</div>
 			
@@ -151,45 +151,45 @@
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUModelo">Modelo</label>
-					<input id="inputGPUVModelo" type="text" class="form-control" placeholder="Modelo" th:field="*{placaDeVideo.modelo}">
+					<input id="inputGPUVModelo" type="text" class="form-control" placeholder="Modelo" th:field="*{placaDeVideo.modelo}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUNucleos">Núcleos</label>
-					<input id="inputGPUNucleos" type="text" class="form-control" placeholder="Quantidade de núcleos" th:field="*{placaDeVideo.nucleos}">
+					<input id="inputGPUNucleos" type="text" class="form-control" placeholder="Quantidade de núcleos" th:field="*{placaDeVideo.nucleos}" />
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-3 form-group">
 					<label for="inputGPUClockB">Clock Base</label>
-					<input id="inputGPUClockB" type="text" class="form-control" placeholder="Clock Base (Mhz)" th:field="*{placaDeVideo.clockBase}">
+					<input id="inputGPUClockB" type="text" class="form-control" placeholder="Clock Base (Mhz)" th:field="*{placaDeVideo.clockBase}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUClockM">Clock Memória</label>
-					<input id="inputGPUClockM" type="text" class="form-control" placeholder="Clock Memória (Mhz)" th:field="*{placaDeVideo.clockMemoria}">
+					<input id="inputGPUClockM" type="text" class="form-control" placeholder="Clock Memória (Mhz)" th:field="*{placaDeVideo.clockMemoria}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUMemSize">Qtd. Memória</label>
-					<input id="inputGPUMemSize" type="text" class="form-control" placeholder="Memória (MB)" th:field="*{placaDeVideo.tamanhoMemoria}">
+					<input id="inputGPUMemSize" type="text" class="form-control" placeholder="Memória (MB)" th:field="*{placaDeVideo.tamanhoMemoria}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUConsumo">Consumo</label>
-					<input id="inputGPUConsumo" type="text" class="form-control" placeholder="Consumo (watts)" th:field="*{placaDeVideo.consumo}">
+					<input id="inputGPUConsumo" type="text" class="form-control" placeholder="Consumo (watts)" th:field="*{placaDeVideo.consumo}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUBits">Bits</label>
-					<input id="inputGPUBits" type="text" class="form-control" placeholder="Bits" th:field="*{placaDeVideo.bits}">
+					<input id="inputGPUBits" type="text" class="form-control" placeholder="Bits" th:field="*{placaDeVideo.bits}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUBandW">Largura de Banda</label>
-					<input id="inputGPUBandW" type="text" class="form-control" placeholder="Largura de banda (GB/s)" th:field="*{placaDeVideo.larguraBanda}">
+					<input id="inputGPUBandW" type="text" class="form-control" placeholder="Largura de banda (GB/s)" th:field="*{placaDeVideo.larguraBanda}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUComprim">Comprimento</label>
-					<input id="inputGPUComprim" type="text" class="form-control" placeholder="Comprimento (cm)" th:field="*{placaDeVideo.comprimento}">
+					<input id="inputGPUComprim" type="text" class="form-control" placeholder="Comprimento (cm)" th:field="*{placaDeVideo.comprimento}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputGPUMaxTemp">Temperatura Máxima</label>
-					<input id="inputGPUMaxTemp" type="text" class="form-control" placeholder="Temperatura máxima (Cº)" th:field="*{placaDeVideo.temperaturaMaxima}">
+					<input id="inputGPUMaxTemp" type="text" class="form-control" placeholder="Temperatura máxima (Cº)" th:field="*{placaDeVideo.temperaturaMaxima}" />
 				</div>
 			</div>
 			
@@ -214,11 +214,11 @@
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputRAMModelo">Modelo</label>
-					<input id="inputRAMModelo" type="text" class="form-control" placeholder="Modelo da Memória" th:field="*{ram.modelo}">
+					<input id="inputRAMModelo" type="text" class="form-control" placeholder="Modelo da Memória" th:field="*{ram.modelo}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputRAMClock">Clock</label>
-					<input id="inputRAMClock" type="text" class="form-control" placeholder="Clock (Mhz)" th:field="*{ram.clock}">
+					<input id="inputRAMClock" type="text" class="form-control" placeholder="Clock (Mhz)" th:field="*{ram.clock}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputRAMSize">Tamanho</label>
@@ -261,11 +261,11 @@
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputStorageModelo">Modelo</label>
-					<input id="inputStorageModelo" type="text" class="form-control" placeholder="Modelo disp. de armazenamento" th:field="*{storage.modelo}">
+					<input id="inputStorageModelo" type="text" class="form-control" placeholder="Modelo disp. de armazenamento" th:field="*{storage.modelo}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputSTOSpeed">Leitura / Gravação</label>
-					<input id="inputSTOSpeed" type="text" class="form-control" placeholder="Velocidade (MB/s)" th:field="*{storage.velocidade}">
+					<input id="inputSTOSpeed" type="text" class="form-control" placeholder="Velocidade (MB/s)" th:field="*{storage.velocidade}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputRAMSize">Capacidade</label>
@@ -309,11 +309,11 @@
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputPSUModelo">Modelo</label>
-					<input id="inputPSUModelo" type="text" class="form-control" placeholder="Modelo da fonte de alimentação" th:field="*{fonte.modelo}">
+					<input id="inputPSUModelo" type="text" class="form-control" placeholder="Modelo da fonte de alimentação" th:field="*{fonte.modelo}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputPSUPot">Potência</label>
-					<input id="inputPSUPot" type="text" class="form-control" placeholder="Potência (watts)" th:field="*{fonte.potencia}">
+					<input id="inputPSUPot" type="text" class="form-control" placeholder="Potência (watts)" th:field="*{fonte.potencia}" />
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="inputPSUSeal">Selo Fonte</label>
@@ -328,7 +328,7 @@
 				</div>
 			</div>
 			
-			<hr>
+			<hr />
 		
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary">
@@ -336,11 +336,9 @@
 				</button>
 				<h4><small>As configurações serão salvas em </small><small th:text="${localArquivo}" class="btn-link"></small></h4>
 			</div>
-			
-			
 		</form>
 		
-		<hr>
+		<hr />
 		
 		<!-- Footer -->
 		<footer>
@@ -352,9 +350,8 @@
 			</div>
 			<!-- /.row -->
 		</footer>
-       </div>
+	</div>
        
-	
     <!-- jQuery -->
     <script src="layout/js/jquery.js"></script>
 

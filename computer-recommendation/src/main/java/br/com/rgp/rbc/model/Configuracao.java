@@ -76,16 +76,6 @@ public class Configuracao implements ISimilaridade<Configuracao> {
 		return valorOriginal / somatorioPesos;
 	}
 
-	public static void main(String[] args) {
-		Configuracao c1 = new Configuracao("teste");
-
-		Configuracao c2 = new Configuracao("teste");
-		c2.getCpu().setClock(1.0);
-		c2.getCpu().setCache(16);
-
-		System.out.println(c1.similaridadeCom(c2));
-	}
-
 	@Override
 	public String toString() {
 		Gson converter = new Gson();

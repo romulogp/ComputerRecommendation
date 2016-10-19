@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.db4o.Db4o;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
-import com.google.gson.Gson;
 
 import br.com.rgp.rbc.model.Configuracao;
 
@@ -38,18 +37,12 @@ public class ConfiguracaoService implements IConfiguracaoService {
 	public final List<Configuracao> listAllConfigurations() {
 		List<Configuracao> configuracoes = new ArrayList<>();
 		
-		System.out.println("Lendo dados do arquivo: \"" + DB_FILE_PATH + "\"");
-		
 		ObjectContainer db = Db4o.openFile(DB_FILE_PATH);
 		ObjectSet<Configuracao> dbList = db.get(Configuracao.class);
 		
 		while (dbList.hasNext()) {
 			configuracoes.add(dbList.next());
-			Gson g = new Gson();
-			System.out.println(g.toJson(configuracoes.get(configuracoes.size() - 1)));
 		}
-		
-		System.out.println(configuracoes.size() + " configurações no total.");
 		
 		db.close();
 		return configuracoes;
