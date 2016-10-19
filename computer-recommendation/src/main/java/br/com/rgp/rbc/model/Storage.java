@@ -15,7 +15,6 @@ public class Storage extends Dispositivo implements ISimilaridade<Storage> {
 	// Valores Mínimos
 	private static final Integer MIN_CAPACIDADE = 40;
 	private static final Integer MIN_VELOCIDADE = 10;
-
 	// Pesos
 	private Double pesoCapacidade;
 	private Double pesoVelocidade;
@@ -30,14 +29,24 @@ public class Storage extends Dispositivo implements ISimilaridade<Storage> {
 	@Digits(integer = 5, fraction = 2)
 	private Double velocidade;
 
+	public Storage() {
+		pesoCapacidade = 0.5;
+		pesoVelocidade = 0.8;
+		
+		super.setMarca("Samsung");
+        super.setModelo("850V EVO");
+        this.capacidade = 4000;
+        this.velocidade = 160.0;
+	}
+	
 	@Override
 	public Double similaridadeCom(Storage obj) {
 		Double similaridade = 0.0;
-
-		similaridade += pesoCapacidade
-				* (1 - ((Math.abs(this.getCapacidade() - obj.getCapacidade())) / (MAX_CAPACIDADE - MIN_CAPACIDADE)));
-		similaridade += pesoVelocidade
-				* (1 - ((Math.abs(this.getVelocidade() - obj.getVelocidade())) / (MAX_VELOCIDADE - MIN_VELOCIDADE)));
+		
+		similaridade += this.getCapacidade() == null || obj.getCapacidade() == null ? 0 :
+				pesoCapacidade * (1 - ((Math.abs(this.getCapacidade() - obj.getCapacidade())) / (double)(MAX_CAPACIDADE - MIN_CAPACIDADE)));
+		similaridade += this.getVelocidade() == null || obj.getCapacidade() == null ? 0 : 
+				pesoVelocidade * (1 - ((Math.abs(this.getVelocidade() - obj.getVelocidade())) / (double)(MAX_VELOCIDADE - MIN_VELOCIDADE)));
 
 		return similaridade;
 	}
@@ -47,7 +56,6 @@ public class Storage extends Dispositivo implements ISimilaridade<Storage> {
 		return pesoCapacidade + pesoVelocidade;
 	}
 
-	
 	public Double getPesoCapacidade() {
 		return pesoCapacidade;
 	}

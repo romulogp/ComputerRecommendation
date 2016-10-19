@@ -8,15 +8,12 @@ import br.com.rgp.rbc.model.ConfiguracaoSimilaridade;
 
 public class RecommendationCore {
 
-	public Double avaliarSimilidaridade(Configuracao c1, Configuracao c2) {
-		return null;
-	}
-
 	public List<ConfiguracaoSimilaridade> avaliarSimilaridades(Configuracao c, List<Configuracao> database) {
 		List<ConfiguracaoSimilaridade> searchResult = new ArrayList<>();
 		
 		for (Configuracao dbConf : database) {
-			searchResult.add(new ConfiguracaoSimilaridade(dbConf, avaliarSimilidaridade(c, dbConf)));
+			searchResult.add(new ConfiguracaoSimilaridade(dbConf, c.similaridadeCom(dbConf)));
+			System.out.println("Similaridade: " + searchResult.get(searchResult.size()-1).getSimilaridade());
 		}
 		return searchResult;
 	}

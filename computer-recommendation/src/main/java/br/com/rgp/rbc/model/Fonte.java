@@ -14,7 +14,6 @@ public class Fonte extends Dispositivo implements ISimilaridade<Fonte> {
 	// Valores Mínimos
 	private static final Double MIN_POTENCIA = 0.0;
 	private static final Double MIN_EFICIENCIA = 0.0;
-
 	// Pesos
 	private Double pesoPotencia;
 	private Double pesoEficiencia;
@@ -32,16 +31,21 @@ public class Fonte extends Dispositivo implements ISimilaridade<Fonte> {
 	public Fonte() {
 		pesoPotencia = 0.7;
 		pesoEficiencia = 0.8;
+		
+		super.setMarca("Corsair");
+        super.setModelo("CX 600 Modular");
+        this.potencia = 600;
+        this.eficiencia = 85;
 	}
 
 	@Override
-	public Double similaridadeCom(Fonte fonte) {
+	public Double similaridadeCom(Fonte obj) {
 		Double similaridade = 0.0;
 
-		similaridade += pesoEficiencia
-				* (1 - ((Math.abs(this.getEficiencia() - fonte.getEficiencia())) / (double)(MAX_EFICIENCIA - MIN_EFICIENCIA)));
-		similaridade += pesoPotencia
-				* (1 - ((Math.abs(this.getPotencia() - fonte.getPotencia())) / (double)(MAX_POTENCIA - MIN_POTENCIA)));
+		similaridade += this.getEficiencia() == null || obj.getEficiencia() == null ? 0 :
+				pesoEficiencia * (1 - ((Math.abs(this.getEficiencia() - obj.getEficiencia())) / (double)(MAX_EFICIENCIA - MIN_EFICIENCIA)));
+		similaridade += this.getPotencia() == null || obj.getPotencia() == null ? 0 :
+				pesoPotencia * (1 - ((Math.abs(this.getPotencia() - obj.getPotencia())) / (double)(MAX_POTENCIA - MIN_POTENCIA)));
 
 		return similaridade;
 	}
@@ -51,7 +55,6 @@ public class Fonte extends Dispositivo implements ISimilaridade<Fonte> {
 		return pesoEficiencia + pesoPotencia;
 	}
 
-	
 	public Double getPesoPotencia() {
 		return pesoPotencia;
 	}
@@ -83,6 +86,5 @@ public class Fonte extends Dispositivo implements ISimilaridade<Fonte> {
 	public void setEficiencia(Integer eficiencia) {
 		this.eficiencia = eficiencia;
 	}
-
 	
 }

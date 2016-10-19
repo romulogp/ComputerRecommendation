@@ -12,7 +12,7 @@ public class PlacaDeVideo extends Dispositivo implements ISimilaridade<PlacaDeVi
 	// Valores Máximos
 	private static final Integer MAX_NUCLEOS = 3584;
 	private static final Double MAX_CLOCK_BASE = 1607.0;
-	private static final Double MAX_CLOCK_MEMORIA = 10.0;
+	private static final Double MAX_CLOCK_MEMORIA = 10000.0;
 	private static final Integer MAX_TAMANHO_MEMORIA = 64;
 	private static final Double MAX_CONSUMO = 250.0;
 	private static final Integer MAX_BITS = 384;
@@ -96,71 +96,57 @@ public class PlacaDeVideo extends Dispositivo implements ISimilaridade<PlacaDeVi
 		pesoLarguraBanda = 0.5;
 		pesoComprimento = 0.8;
 		pesoTempMaxima = 0.2;
+		
+		super.setMarca("NVidia");
+        super.setModelo("GTX 780 Ti");
+        this.nucleos = 2280;
+        this.clockBase = 876.0;
+        this.clockMemoria = 7.0;
+        this.tamanhoMemoria = 3072;
+        this.consumo = 250.0;
+        this.bits = 384;
+        this.larguraBanda = 336.0;
+        this.comprimento = 26.67;
+        this.temperaturaMaxima = 95.0;
 	}
 
 	@Override
 	public Double similaridadeCom(PlacaDeVideo obj) {
 		Double similaridade = 0.0;
 
-		similaridade += pesoNucleos
-				* (1 - ((Math.abs(this.getNucleos() - obj.getNucleos())) / (double)(MAX_NUCLEOS - MIN_NUCLEOS)));
-//		similaridade += pesoClockBase
-//				* (1 - ((Math.abs(this.getClockBase() - obj.getClockBase())) / (double)(MAX_CLOCK_BASE - MIN_CLOCK_BASE)));
-//		similaridade += pesoClockMemoria
-//				* (1 - ((Math.abs(this.getClockMemoria() - obj.getClockMemoria())) / (double)(MAX_CLOCK_MEMORIA - MIN_CLOCK_MEMORIA)));
-//		similaridade += pesoTamanhoMemoria
-//				* (1 - ((Math.abs(this.getTamanhoMemoria() - obj.getTamanhoMemoria())) / (double)(MAX_TAMANHO_MEMORIA - MIN_TAMANHO_MEMORIA)));
-//		similaridade += pesoConsumo
-//				* (1 - ((Math.abs(this.getConsumo() - obj.getConsumo())) / (double)(MAX_CONSUMO - MIN_CONSUMO)));
-//		similaridade += pesoBits
-//				* (1 - ((Math.abs(this.getBits() - obj.getBits())) / (double)(MAX_BITS - MIN_BITS)));
-//		similaridade += pesoLarguraBanda
-//				* (1 - ((Math.abs(this.getLarguraBanda() - obj.getLarguraBanda())) / (double)(MAX_LARGURA_BANDA - MIN_LARGURA_BANDA)));
-//		similaridade += pesoComprimento
-//				* (1 - ((Math.abs(this.getComprimento() - obj.getComprimento())) / (double)(MAX_COMPRIMENTO - MIN_COMPRIMENTO)));
-//		similaridade += pesoTempMaxima
-//				* (1 - ((Math.abs(this.getTemperaturaMaxima() - obj.getTemperaturaMaxima())) / (double)(MAX_TEMP_MAXIMA - MIN_TEMP_MAXIMA)));
-		System.out.println(similaridade);
+		similaridade += this.getNucleos() == null || obj.getNucleos() == null ? 0 :
+				pesoNucleos * (1 - ((Math.abs(this.getNucleos() - obj.getNucleos())) / (double)(MAX_NUCLEOS - MIN_NUCLEOS)));
+		similaridade += this.getClockBase() == null || obj.getClockBase() == null ? 0 :
+				pesoClockBase * (1 - ((Math.abs(this.getClockBase() - obj.getClockBase())) / (double)(MAX_CLOCK_BASE - MIN_CLOCK_BASE)));
+		similaridade += this.getClockMemoria() == null || obj.getClockMemoria() == null ? 0 :
+				pesoClockMemoria * (1 - ((Math.abs(this.getClockMemoria() - obj.getClockMemoria())) / (double)(MAX_CLOCK_MEMORIA - MIN_CLOCK_MEMORIA)));
+		similaridade += this.getTamanhoMemoria() == null || obj.getTamanhoMemoria() == null ? 0 :
+				pesoTamanhoMemoria * (1 - ((Math.abs(this.getTamanhoMemoria() - obj.getTamanhoMemoria())) / (double)(MAX_TAMANHO_MEMORIA - MIN_TAMANHO_MEMORIA)));
+		similaridade += this.getConsumo() == null || obj.getConsumo() == null ? 0 :
+				pesoConsumo * (1 - ((Math.abs(this.getConsumo() - obj.getConsumo())) / (double)(MAX_CONSUMO - MIN_CONSUMO)));
+		similaridade += this.getBits() == null || obj.getBits() == null ? 0 :
+				pesoBits * (1 - ((Math.abs(this.getBits() - obj.getBits())) / (double)(MAX_BITS - MIN_BITS)));
+		similaridade += this.getLarguraBanda() == null || obj.getLarguraBanda() == null ? 0 :
+				pesoLarguraBanda * (1 - ((Math.abs(this.getLarguraBanda() - obj.getLarguraBanda())) / (double)(MAX_LARGURA_BANDA - MIN_LARGURA_BANDA)));
+		similaridade += this.getComprimento() == null || obj.getComprimento() == null ? 0 :
+				pesoComprimento * (1 - ((Math.abs(this.getComprimento() - obj.getComprimento())) / (double)(MAX_COMPRIMENTO - MIN_COMPRIMENTO)));
+		similaridade += this.getTemperaturaMaxima() == null || obj.getTemperaturaMaxima() == null ? 0 :
+				pesoTempMaxima * (1 - ((Math.abs(this.getTemperaturaMaxima() - obj.getTemperaturaMaxima())) / (double)(MAX_TEMP_MAXIMA - MIN_TEMP_MAXIMA)));
+
 		return similaridade;
 	}
 
-	public static void main(String[] args) {
-		PlacaDeVideo o = new PlacaDeVideo();
-		o.setNucleos(2280);
-		o.setBits(384);
-		o.setClockBase(1000.0);
-		o.setClockMemoria(7.0);
-		o.setComprimento(24.0);
-		o.setConsumo(180.0);
-		o.setLarguraBanda(320.0);
-		o.setTamanhoMemoria(4);
-		o.setTemperaturaMaxima(98.0);
-
-		PlacaDeVideo o2 = new PlacaDeVideo();
-		o2.setNucleos(320);
-		o2.setBits(254);
-		o2.setClockBase(650.0);
-		o2.setClockMemoria(5.0);
-		o2.setComprimento(24.0);
-		o2.setConsumo(90.0);
-		o2.setLarguraBanda(44.8);
-		o2.setTamanhoMemoria(1);
-		o2.setTemperaturaMaxima(56.0);
-
-		System.out.println(o.similaridadeCom(o2) / o.getSomatorioPesos());
-	}
-	
 	@Override
 	public Double getSomatorioPesos() {
-		return pesoNucleos;
-//				+ pesoClockBase
-//				+ pesoClockMemoria 
-//				+ pesoTamanhoMemoria 
-//				+ pesoConsumo 
-//				+ pesoBits 
-//				+ pesoLarguraBanda 
-//				+ pesoComprimento 
-//				+ pesoTempMaxima;
+		return pesoNucleos
+				+ pesoClockBase
+				+ pesoClockMemoria 
+				+ pesoTamanhoMemoria 
+				+ pesoConsumo 
+				+ pesoBits 
+				+ pesoLarguraBanda 
+				+ pesoComprimento 
+				+ pesoTempMaxima;
 	}
 	
 	public Double getPesoNucleos() {

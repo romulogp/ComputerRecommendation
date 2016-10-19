@@ -1,5 +1,7 @@
 package br.com.rgp.rbc.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +14,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.rgp.rbc.model.Configuracao;
+import br.com.rgp.rbc.model.ConfiguracaoSimilaridade;
+import br.com.rgp.rbc.service.ConfiguracaoService;
 import br.com.rgp.rbc.service.IConfiguracaoService;
 import br.com.rgp.rbc.service.IRecommendationService;
+import br.com.rgp.rbc.service.RecommendationService;
 
 @Controller
 public class ComputerController {
@@ -31,12 +36,18 @@ public class ComputerController {
 	
 	@RequestMapping(value = "/pesquisa", method = RequestMethod.POST)
 	public ModelAndView searchConfigurationResult(Configuracao searchConfig, BindingResult result, Model model, RedirectAttributes redAttributes) {
-		
-		model.addAttribute("configuracoes", recommendationService.searchForRecommendedConfigurations(searchConfig));
-		
 		return new ModelAndView("redirect:/resultadoPesquisa");
 	}
 
+	@RequestMapping("/resultadoPesquisa")
+	public String searchResult(Model model) {
+		List<ConfiguracaoSimilaridade> confSm = recommendationService.searchForRecommendedConfigurations(new Configuracao("teste"));
+		System.out.println(confSm.size());
+//		model.addAttribute("configuracoes", recommendationService.searchForRecommendedConfigurations(searchConfig));
+		model.addAttribute("configuracoes", confSm);
+		
+		return "configuracao/resultadoPesquisa";
+	}
 	
 	@RequestMapping("/cadastro")
 	public ModelAndView newConfiguration(Configuracao configuracao) {
@@ -64,4 +75,9 @@ public class ComputerController {
 		return "configuracao/lista";
 	}
 
+//	public static void main(String[] args) {
+//		IRecommendationService recommendationService = new RecommendationService();
+//		recommendationService.searchForRecommendedConfigurations(new Configuracao("teste"));
+//	}
+	
 }

@@ -34,37 +34,57 @@ public class Configuracao implements ISimilaridade<Configuracao> {
 	@JoinColumn(name = "storage_id")
 	private Storage storage;
 
-	/**
-	 * Configuração Padrão
-	 */
-	// public Configuracao() {
-	// this.cpu = new CPU();
-	// this.fonte = new Fonte();
-	// this.ram = new Memoria();
-	// this.placaDeVideo = new PlacaDeVideo();
-	// this.placaMae = new PlacaMae();
-	// this.storage = new Storage();
-	// }
+	public Configuracao() {
 
+	}
+	
 	/**
-	 * Cria uma nova configuração
-	 * 
-	 * @param cpu
-	 * @param fonte
-	 * @param ram
-	 * @param placaDeVideo
-	 * @param placaMae
-	 * @param storage
+	 * Configuração de teste
 	 */
-	// public Configuracao(CPU cpu, Fonte fonte, Memoria ram, PlacaDeVideo
-	// placaDeVideo, PlacaMae placaMae, Storage storage) {
-	// this.cpu = cpu;
-	// this.fonte = fonte;
-	// this.ram = ram;
-	// this.placaDeVideo = placaDeVideo;
-	// this.placaMae = placaMae;
-	// this.storage = storage;
-	// }
+	public Configuracao(String teste) {
+		this.cpu = new CPU();
+		this.fonte = new Fonte();
+		this.ram = new Memoria();
+		this.placaDeVideo = new PlacaDeVideo();
+		this.placaMae = new PlacaMae();
+		this.storage = new Storage();
+	}
+
+	@Override
+	public Double similaridadeCom(Configuracao configuracao) {
+		Double somatorioSimilaridades = 0.0;
+
+		somatorioSimilaridades += this.getCpu().similaridadeCom(configuracao.getCpu());
+		somatorioSimilaridades += this.getFonte().similaridadeCom(configuracao.getFonte());
+		somatorioSimilaridades += this.getPlacaDeVideo().similaridadeCom(configuracao.getPlacaDeVideo());
+		somatorioSimilaridades += this.getRam().similaridadeCom(configuracao.getRam());
+		somatorioSimilaridades += this.getStorage().similaridadeCom(configuracao.getStorage());
+
+		double smNormalizada = normalizarSimilaridade(somatorioSimilaridades, getSomatorioPesos());
+		
+		return smNormalizada > 0 ? smNormalizada : 0;
+	}
+
+	@Override
+	public Double getSomatorioPesos() {
+		return cpu.getSomatorioPesos() + fonte.getSomatorioPesos()
+				+ ram.getSomatorioPesos() + placaDeVideo.getSomatorioPesos() 
+				+ placaMae.getSomatorioPesos() + storage.getSomatorioPesos();
+	}
+
+	private Double normalizarSimilaridade(Double valorOriginal, Double somatorioPesos) {
+		return valorOriginal / somatorioPesos;
+	}
+
+	public static void main(String[] args) {
+		Configuracao c1 = new Configuracao("teste");
+
+		Configuracao c2 = new Configuracao("teste");
+		c2.getCpu().setClock(1.0);
+		c2.getCpu().setCache(16);
+
+		System.out.println(c1.similaridadeCom(c2));
+	}
 
 	@Override
 	public String toString() {
@@ -120,32 +140,4 @@ public class Configuracao implements ISimilaridade<Configuracao> {
 		this.storage = storage;
 	}
 
-	@Override
-	public Double similaridadeCom(Configuracao configuracao) {
-		Double somatorioSimilaridades = 0.0;
-		somatorioSimilaridades += this.getCpu().similaridadeCom(configuracao.getCpu());
-		somatorioSimilaridades += this.getFonte().similaridadeCom(configuracao.getFonte());
-		somatorioSimilaridades += this.getPlacaDeVideo().similaridadeCom(configuracao.getPlacaDeVideo());
-		somatorioSimilaridades += this.getRam().similaridadeCom(configuracao.getRam());
-		somatorioSimilaridades += this.getStorage().similaridadeCom(configuracao.getStorage());
-		
-		return normalizarSimilaridade(somatorioSimilaridades, getSomatorioPesos());
-	}
-
-	@Override
-	public Double getSomatorioPesos() {
-		return cpu.getSomatorioPesos()
-				+ fonte.getSomatorioPesos()
-				+ ram.getSomatorioPesos()
-				+ placaDeVideo.getSomatorioPesos()
-				+ placaMae.getSomatorioPesos()
-				+ storage.getSomatorioPesos();
-	}
-
-	private Double normalizarSimilaridade(Double valorOriginal, Double somatorioPesos) {
-		System.out.println(valorOriginal + " / " + somatorioPesos);
-		return valorOriginal / somatorioPesos;
-	}
-
-	
 }

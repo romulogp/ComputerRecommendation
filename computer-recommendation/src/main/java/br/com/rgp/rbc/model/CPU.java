@@ -53,20 +53,27 @@ public class CPU extends Dispositivo implements ISimilaridade<CPU> {
 		pesoClock = 0.8;
 		pesoCache = 0.6;
 		pesoTdp = 0.1;
+		
+		super.setMarca("Intel");
+        super.setModelo("Core I7 4790K");
+        this.nucleos = 8;
+        this.clock = 4.0;
+        this.cache = 8;
+        this.tdp = 88;
 	}
 
 	@Override
 	public Double similaridadeCom(CPU obj) {
 		Double similaridade = 0.0;
 		
-		similaridade += pesoNucleos
-				* (1 - ((Math.abs(this.getNucleos() - obj.getNucleos())) / (double)(MAX_NUCLEOS - MIN_NUCLEOS)));
-		similaridade += pesoClock 
-				* (1 - ((Math.abs(this.getClock() - obj.getClock())) / (double)(MAX_CLOCK - MIN_CLOCK)));
-		similaridade += pesoCache 
-				* (1 - ((Math.abs(this.getCache() - obj.getCache())) / (double)(MAX_CACHE - MIN_CACHE)));
-		similaridade += pesoTdp 
-				* (1 - ((Math.abs(this.getTdp() - obj.getTdp())) / (double)(MAX_TDP - MIN_TDP)));
+		similaridade += this.getNucleos() == null || obj.getNucleos() == null ? 0 :
+				pesoNucleos * (1 - ((Math.abs(this.getNucleos() - obj.getNucleos())) / (double)(MAX_NUCLEOS - MIN_NUCLEOS)));
+		similaridade += this.getClock() == null || obj.getClock() == null ? 0 :
+				pesoClock * (1 - ((Math.abs(this.getClock() - obj.getClock())) / (double)(MAX_CLOCK - MIN_CLOCK)));
+		similaridade += this.getCache() == null || obj.getCache() == null ? 0 :
+				pesoCache * (1 - ((Math.abs(this.getCache() - obj.getCache())) / (double)(MAX_CACHE - MIN_CACHE)));
+		similaridade += this.getPesoTdp() == null || obj.getTdp() == null ? 0 :
+				pesoTdp * (1 - ((Math.abs(this.getTdp() - obj.getTdp())) / (double)(MAX_TDP - MIN_TDP)));
 
 		return similaridade;
 	}
@@ -141,20 +148,4 @@ public class CPU extends Dispositivo implements ISimilaridade<CPU> {
 		this.tdp = tdp;
 	}
 	
-	public static void main(String[] args) {
-		CPU o = new CPU();
-		o.setCache(8);
-		o.setClock(4.2);
-		o.setNucleos(4);
-		o.setTdp(88);
-		
-		CPU o2 = new CPU();
-		o2.setCache(16);
-		o2.setClock(3.6);
-		o2.setNucleos(8);
-		o2.setTdp(130);
-		
-		System.out.println(o.similaridadeCom(o2) / o.getSomatorioPesos());
-	}
-
 }
