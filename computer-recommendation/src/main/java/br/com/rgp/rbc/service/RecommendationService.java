@@ -17,11 +17,11 @@ public class RecommendationService implements IRecommendationService {
 	
 	@Override
 	public List<ConfiguracaoSimilaridade> searchForRecommendedConfigurations(Configuracao c) {
-		RecommendationCore core = new RecommendationCore();
+		RecommendationCore avaliator = new RecommendationCore();
 		
 		List<Configuracao> database = configService.listAllConfigurations();
 		
-		return core.avaliarSimilaridades(c, database);
+		return avaliator.avaliarSimilaridades(c, database);
 	}
 
 }

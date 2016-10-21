@@ -15,6 +15,16 @@ public class RecommendationCore {
 			searchResult.add(new ConfiguracaoSimilaridade(dbConf, c.similaridadeCom(dbConf)));
 		}
 		
+		// Lambda para ordenar a lista de forma DECRESCENTE
+		searchResult.sort((o1, o2) -> {
+			if (o1.getSimilaridade() > o2.getSimilaridade()) {
+				return -1;
+			} else if (o1.getSimilaridade() < o2.getSimilaridade()) {
+				return 1;
+			}
+			return 0;
+		});
+		
 		return searchResult;
 	}
 	
